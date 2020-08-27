@@ -54,11 +54,16 @@ module cylinder_stack(d, h, fn = 30, col = [0.8, 0.8, 0.8]) {
 
 module e3d_clamp_cut(clearance = 0.3) {
   tz(-e3d_clamp_top_h) {
-    cylinder(d = e3d_clamp_d, h = e3d_clamp_top_h+eta, $fn = 30);
+   tz(-clearance) {
+      cylinder(d = e3d_clamp_d,
+               h = e3d_clamp_top_h+eta+clearance, $fn = 30);
+    }
     tz(-e3d_clamp_mid_h-eta/2) {
-      cylinder(d = e3d_clamp_mid_d, h = e3d_clamp_mid_h+eta, $fn = 30);
+      cylinder(d = e3d_clamp_mid_d,
+               h = e3d_clamp_mid_h+eta, $fn = 30);
       tz(-e3d_clamp_bottom_h-eta/2) {
-        cylinder(d = e3d_clamp_d, h = e3d_clamp_bottom_h+eta, $fn = 30);
+        cylinder(d = e3d_clamp_d,
+                 h = e3d_clamp_bottom_h+eta+clearance, $fn = 30);
       }
     }
   }
