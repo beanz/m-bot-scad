@@ -254,7 +254,7 @@ module top_belt() {
          [motor_x+pbr, pos[1]+y_rail_offset+20.5-bbr], // right
          [pos[0]+x_car_l/2-th, pos[1]+y_rail_offset+20.5-bbr], // carriage
          [pos[0]+x_car_l/2-th, pos[1]+y_rail_offset+20.5-bbr+th], // front
-         [pos[0]+th, pos[1]+y_rail_offset+20.5-bbr+th], // middle
+         [pos[0]+x_car_l/2, pos[1]+y_rail_offset+20.5-bbr+th], // middle
         ],
         bcolor = top_belt_color);
 }
@@ -271,8 +271,8 @@ module bottom_belt() {
           [motor_x+pbr, fd/2-ew/2+bbr], // rear right
           [-(motor_x+pbr), fd/2-ew/2+bbr], // rear left
           [-(motor_x+pbr), pos[1]+y_rail_offset+20.5-bbr], // left
-          [pos[0]-x_car_l/2+th, pos[1]+y_rail_offset+20.5-bbr], // carriage rear
-          [pos[0]-x_car_l/2+th, pos[1]+y_rail_offset+20.5-bbr+th], // front
+          [pos[0]-x_car_l/2+th*2, pos[1]+y_rail_offset+20.5-bbr], // carriage rear
+          [pos[0]-x_car_l/2+th*2, pos[1]+y_rail_offset+20.5-bbr+th], // front
           [pos[0]-th, pos[1]+y_rail_offset+20.5-bbr+th], // middle
         ],
         bcolor = bottom_belt_color);
