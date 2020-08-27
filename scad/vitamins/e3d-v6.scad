@@ -104,10 +104,10 @@ module e3d_v6_3mm_bowden() {
       }
     }
   translate([0, 0, -e3d_clamp_height()-e3d_heatsink_height()]) {
-    rotate([0,0,180]) {
+    rotate([0, 0, 90]) {
       rotate([90,0,0]) color("blue") import("e3d/V6.6_Duct.stl");
+      rotate([0, 0, 180]) translate([20,0,30/2]) rotate([0,90,0]) color(grey(20)) fan(fan30x10);
     }
-    translate([20,0,30/2]) rotate([0,90,0]) color(grey(20)) fan(fan30x10);
   }
 }
 

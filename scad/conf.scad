@@ -83,7 +83,6 @@ function screw_for(l) = (l <= 8 ? 8 :
                              ceil(l / 5) * 5)))));
 
 module screw_washer(t, l) {
-  echo(str("screw washer = ", l));
   screw_and_washer(t, screw_for(l+washer_h(screw_washer(t))));
 }
 

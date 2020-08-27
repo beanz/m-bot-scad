@@ -7,7 +7,10 @@ use <frame.scad>
 use <electronics.scad>
 use <x-axis.scad>
 use <z-axis.scad>
+use <spool-holder.scad>
+use <belts.scad>
 use <vitamins/e3d-v6.scad>
+use <x-carriage.scad>
 
 clamp_h = e3d_clamp_h();
 clamp_d = e3d_clamp_d();
@@ -99,34 +102,7 @@ module belts_assembly()
 module hotend_assembly()
   pose([68.3, 0, 317.8], [-5.49, -159.36, 344.71]) assembly("hotend") {
   frame_with_z_motor_assembly();
-
-  txyz(pos[0], pos[1]+y_rail_offset, x_bar_h) {
-    tyz(-carriage_w(x_car)/2-th/2-0.1, carriage_total_h(x_car)/2-th/4) {
-      tyz(-th*1.5-e3d_clamp_d()/2, -(x_car_h/2+hotend_offset)) {
-        explode([0, -clamp_d*1.5, 0], true) {
-          rz(90) e3d_v6_3mm_bowden();
-          explode([0, -10, 0], true) {
-            hotend_clamp_stl();
-            tz(-e3d_height()) translate(probe_offset) probe(probe);
-            ty(-e3d_clamp_d()/2-th) rx(90) probe_mount_stl();
-            tyz(-(probe_washer_d(probe)/2+e3d_clamp_d()/2)+0.5,
-               -(clamp_top_h+clamp_mid_h/2)) {
-              w = screw_washer(car_screw);
-              n = screw_nut(car_screw);
-              myz(10) {
-                rx(-90) {
-                  screw_washer_up(car_screw,
-                                  th*3+clamp_d+0.5+washer_h(w)+nut_h(n));
-                  tz(th*3+clamp_d+0.5) explode([0, 0, 40]) washer(w);
-                  tz(th*3+clamp_d+0.5) explode([0, 0, 45]) nut(n);
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
+  txyz(pos[0], pos[1]+y_rail_offset, x_bar_h) hotend_subassembly();
 }
 
 module frame_with_z_motor_assembly()
@@ -209,94 +185,6 @@ module frame_with_spool_holder_assembly()
   }
 }
 
-module spool_rod_assembly()
-  assembly("spool_rod") {
-  tz(-sp_h/2-ew/2) studding(8, sp_h/2+ew*5, center = false);
-  mxy(-sp_h/2-washer_h(M8_penny_washer)-nut_h(M8_nut)) {
-    nut(M8_nut)
-      washer(M8_penny_washer)
-      washer(M8_washer)
-      tz(washer_h(M8_penny_washer)+washer_h(M8_washer)) ball_bearing(BB608)
-      washer(M8_washer)
-      nut(M8_nut);
-  }
-}
-
-module top_belt() {
-  /* thr = th/2+belt_thickness(GT2x6); */
-  /* bt = belt_thickness(GT2x6); */
-  /* path = */
-  /*   [[pos[0]-x_car_l/2,        pos[1]+y_rail_offset-20.5+bbr-th, 0], // carriage */
-  /*    [pos[0]-x_car_l/2+th*2,   pos[1]+y_rail_offset-20.5+bbr-th, 0], // carriage */
-  /*    [pos[0]-x_car_l/2+th*2, pos[1]+y_rail_offset-20.5+bbr, bt/2], // carriage */
-  /*    [-motor_x+pbr+bbr, pos[1]+y_rail_offset-20.5, -bbr-bt/2], // left */
-  /*    [-motor_x, -fd/2+motor_offset+ew/2, pbr+bt/2], // front left */
-  /*    [-(motor_x+pbr-bbr), fd/2-ew/2, bbr+bt/2], // rear left */
-  /*    [motor_x+pbr-bbr, fd/2-ew/2, bbr+bt/2], // rear right */
-  /*    [motor_x+pbr-bbr, pos[1]+y_rail_offset+20.5, bbr+bt/2], // right */
-  /*    [pos[0]+x_car_l/2-th, pos[1]+y_rail_offset+20.5-bbr, bt/2], // carriage */
-  /*    [pos[0]+x_car_l/2-th, pos[1]+y_rail_offset+20.5-bbr+th, 0], // front */
-  /*    [pos[0]+th, pos[1]+y_rail_offset+20.5-bbr+th, 0], // middle */
-  /* ]; */
-
-  /* belt(GT2x6, path, gap = 100, gap_pt = [pos[0], pos[1]+y_rail_offset], */
-  /*      belt_colour = top_belt_color); */
-
-  mbelt(GT2x6,
-        [[pos[0]-x_car_l/2, pos[1]+y_rail_offset-20.5+bbr-th], // carriage
-         [pos[0]-x_car_l/2+th*2, pos[1]+y_rail_offset-20.5+bbr-th], // carriage
-         [pos[0]-x_car_l/2+th*2, pos[1]+y_rail_offset-20.5+bbr], // carriage
-         [-(motor_x-pbr), pos[1]+y_rail_offset-20.5+bbr], // left
-         [-(motor_x-pbr), -fd/2+motor_offset+ew/2-pbr], // front left
-         [-(motor_x+pbr), -fd/2+motor_offset+ew/2-pbr],
-         [-(motor_x+pbr), fd/2-ew/2+bbr], // rear left
-         [motor_x+pbr, fd/2-ew/2+bbr], // rear right
-         [motor_x+pbr, pos[1]+y_rail_offset+20.5-bbr], // right
-         [pos[0]+x_car_l/2-th, pos[1]+y_rail_offset+20.5-bbr], // carriage
-         [pos[0]+x_car_l/2-th, pos[1]+y_rail_offset+20.5-bbr+th], // front
-         [pos[0]+x_car_l/2, pos[1]+y_rail_offset+20.5-bbr+th], // middle
-        ],
-        bcolor = top_belt_color);
-}
-
-module bottom_belt() {
-  mbelt(GT2x6,
-        [
-          [pos[0]+x_car_l/2, pos[1]+y_rail_offset-20.5+bbr-th], // carriage
-          [pos[0]+x_car_l/2-th*2, pos[1]+y_rail_offset-20.5+bbr-th], // front
-          [pos[0]+x_car_l/2-th*2, pos[1]+y_rail_offset-20.5+bbr], // rear
-          [motor_x-pbr, pos[1]+y_rail_offset-20.5+bbr], // right
-          [motor_x-pbr, -fd/2+motor_offset+ew/2-pbr], // front right
-          [motor_x+pbr, -fd/2+motor_offset+ew/2-pbr],
-          [motor_x+pbr, fd/2-ew/2+bbr], // rear right
-          [-(motor_x+pbr), fd/2-ew/2+bbr], // rear left
-          [-(motor_x+pbr), pos[1]+y_rail_offset+20.5-bbr], // left
-          [pos[0]-x_car_l/2+th*2, pos[1]+y_rail_offset+20.5-bbr], // carriage rear
-          [pos[0]-x_car_l/2+th*2, pos[1]+y_rail_offset+20.5-bbr+th], // front
-          [pos[0]-th, pos[1]+y_rail_offset+20.5-bbr+th], // middle
-        ],
-        bcolor = bottom_belt_color);
-}
-
-function dist(p1, p2) = sqrt((p1[0]-p2[0])*(p1[0]-p2[0])+
-                             (p1[1]-p2[1])*(p1[1]-p2[1]));
-function pdist(p, i = 0, a = 0) =
-  len(p) > i+1 ? pdist(p, i+1, a+dist(p[i], p[i+1])) : a;
-
-module mbelt(type, path, bcolor = top_belt_color) {
-  th = belt_thickness(type);
-  h = belt_width(type);
-  vitamin(str("BELT: GT2 ", pdist(path)));
-  color(bcolor) {
-    for (i = [0:len(path)-2]) {
-      hull() {
-        txy(path[i][0], path[i][1]) cylinder(d = th, h = h, center = true);
-        txy(path[i+1][0], path[i+1][1]) cylinder(d = th, h = h, center = true);
-      }
-    }
-  }
-}
-
 if ($preview) {
   $explode = 0;
   main_assembly();
@@ -306,7 +194,5 @@ if ($preview) {
   //hotend_assembly();
   //frame_with_z_motor_assembly();
   //frame_with_spool_holder_assembly();
-  //spool_rod_assembly();
-  //spool_holder_assembly();
 }
 

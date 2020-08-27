@@ -3,6 +3,27 @@ include <lazy.scad>
 include <shapes.scad>
 use <common.scad>
 
+module dual_idler_assembly() assembly("dual_idler") {
+  tz(-washer_h(M3_washer)/2) washer(M3_washer);
+  mxy(washer_h(M3_washer)/2+ball_bearing_h(BBF623)) {
+    explode([0, 0, 5], true) {
+      tz(washer_h(M3_washer)/2) {
+        tz(-washer_h(M3_washer)/2) washer(M3_washer);
+        mxy(washer_h(M3_washer)/2) {
+          explode([0, 0, 3], true) {
+            tz(ball_bearing_h(BBF623)/2) {
+              mirror([0,0,1]) ball_bearing(BBF623);
+            }
+          }
+        }
+        tz(washer_h(M3_washer)/2+ball_bearing_h(BBF623)) {
+          explode([0, 0, 5]) washer(M3_washer);
+        }
+      }
+    }
+  }
+}
+
 module right_idler_stl() {
   stl("right_idler");
   idler_stl();

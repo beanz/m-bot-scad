@@ -1,14 +1,19 @@
 include <conf.scad>
 include <lazy.scad>
 include <shapes.scad>
+
 use <common.scad>
-use <idlers.scad>
+use <corners.scad>
+use <spool-holder.scad>
+use <left-frame.scad>
+use <right-frame.scad>
 use <x-axis.scad>
 use <y-axis.scad>
 use <z-axis.scad>
 use <electronics.scad>
 use <xy-motor.scad>
 use <titan-mount.scad>
+use <rail-guard.scad>
 
 module right_end_with_z_carriage_rail_assembly()
     pose([59.5, 0, 314.5], [71.76, 71.11, 146.26])
@@ -129,7 +134,7 @@ module right_upper_end_assembly()
   mxz(fd/2) {
     tyz(-ew*1.5, fh-ew*1.75) ry(90) {
       explode([0, 180, 0]) {
-        side_frame_top_corner_stl();
+        side_top_corner_stl();
         tz(th) {
           for (j = [-1, 0, 1]) {
             ty(j*ew) {
@@ -178,7 +183,7 @@ module left_upper_end_assembly()
     mxz(fd/2) {
       tyz(-ew*1.5, fh-ew*1.75) ry(90) {
         explode([0, 90, 0]) {
-          side_frame_top_corner_stl();
+          side_top_corner_stl();
           tz(th) {
             for (j = [-1, 0, 1]) {
               ty(j*ew) {
@@ -304,168 +309,6 @@ module lower_end_assembly() {
   }
 }
 
-//! Items should be slid into place as shown. The idler will need to
-//! be slid down temporarily to allow the hidden corner bracket grub
-//! screw to be tightened.
-
-module right_rear_upright_assembly()
-    pose([44.5, 0, 14.2], [40.56, 242.73, 179.62])
-    assembly("right_rear_upright") {
-  ty(fd/2) {
-    // corner upright
-    txy(-ew2/2, -ew/2) {
-      rz(90) {
-        extrusion(e2040, fh, center = false);
-      }
-      txz(-ew2/2, ew2) explode([0, 0, -80]) {
-        rz(180) rx(90) cast_corner_bracket_assembly();
-      }
-      tz(-th*2) explode([0, 0, -120], true) {
-        foot_stl();
-        tz(th) myz(ew/2) screw_up(foot_screw, 12);
-      }
-      if ($label) {
-        txz(20, fh/2) ry(90) label(str(fh, "mm"));
-      }
-    }
-    txz(-ew2, ew) explode([0, 0, -110]) {
-      mirror([1, 0, 0]) rz(90) ry(90) bottom_corner_unit();
-    }
-    sz = fh/2;
-    rod_z = spool_hub_bore(sp)/2-ball_bearing_od(BB608)/2;
-    ty(-ew) {
-      txz(-ew2/2, sz+rod_z) {
-        rx(90) {
-          explode([0, fh/2+20, 0]) {
-            spool_rod_holder_stl();
-            myz(10) mxz(ew-screw_clearance_d(ex_screw)-th/2) {
-              tz(th) screw_washer(ex_screw, 10);
-              tz(-3) tnut(M4_tnut);
-            }
-          }
-        }
-      }
-    }
-  }
-  txyz(-ew2, fd/2-ew/2, fh-ew2/2-ew) {
-    explode([0, 0, 140], offset = [0, 0, -20]) {
-      ry(90) rx(-90) inside_hidden_corner_bracket();
-    }
-  }
-  txyz(-ew*2-motor_hole_offset+ew/2+pbr-bbr, fd/2-ew/2, y_bar_h) {
-    explode([0, 0, 80]) back_right_idler_assembly();
-  }
-}
-
-//! Items should be slid into place as shown. The idler will need to
-//! be slide down temporarily to allow the hidden corner bracket grub
-//! screw to be tightened. The extra t-nuts are for the IEC socket mount
-//! that is attached later.
-
-module left_rear_upright_assembly()
-    pose([44.5, 0, 14.2], [40.56, 242.73, 179.62])
-    assembly("left_rear_upright") {
-  mirror([1, 0, 0]) ty(fd/2) {
-    // corner upright
-    txy(-ew2/2, -ew/2) {
-      rz(90) {
-        extrusion(e2040, fh, center = false);
-      }
-      txz(-ew2/2, ew2) explode([0, 0, -80]) {
-        rz(180) rx(90) cast_corner_bracket_assembly();
-      }
-      tz(-th*2) explode([0, 0, -120], true) {
-        foot_stl();
-        tz(th) myz(ew/2) screw_up(foot_screw, 12);
-      }
-      if ($label) {
-        txz(20, fh/2) ry(90) label(str(fh, "mm"));
-      }
-    }
-    txz(-ew2, ew) explode([0, 0, -110]) {
-      mirror([1,0,0]) rz(90) ry(90) bottom_corner_unit();
-    }
-  }
-  txyz(ew2, fd/2-ew/2, fh-ew2/2-ew) {
-    explode([0, 0, 200], offset = [0, 0, -20]) {
-      rz(180) ry(90) rx(-90) inside_hidden_corner_bracket();
-    }
-  }
-  txyz(-(-ew*2-motor_hole_offset+ew/2+pbr-bbr), fd/2-ew/2, y_bar_h) {
-    explode([0, 0, 140]) back_left_idler_assembly();
-  }
-  txyz(-th, fd/2-ew-iec_socket_cut_out_h()/2, ew2+psu_w/2+th) {
-    explode([0, 0, fh-70], offset = [25, 0, 0]) {
-      ry(-90) socket_mount_preassembly();
-    }
-  }
-}
-
-module right_front_upright_assembly()
-  pose([71.8, 0, 131.1], [124.79, -49.3, 201.78])
-  assembly("right_front_upright") {
-  ty(-fd/2) {
-    // corner upright
-    txy(-ew2/2, ew/2) {
-      rz(90) {
-        extrusion(e2040, fh, center = false);
-      }
-      txz(-ew2/2, ew2) explode([0, 0, -80]) {
-        rz(180) rx(90) cast_corner_bracket_assembly();
-      }
-      tz(-th*2) explode([0, 0, -120], true) {
-        foot_stl();
-        tz(th) myz(ew/2) screw_up(foot_screw, 12);
-      }
-      if ($label) {
-        txz(20, fh/2) ry(90) label(str(fh, "mm"));
-      }
-    }
-    txz(-ew2, ew) explode([0,0,-110]) rz(-90) ry(90) bottom_corner_unit();
-    sz = fh/2;
-    rod_z = spool_hub_bore(sp)/2-ball_bearing_od(BB608)/2;
-    ty(ew) {
-      txz(-ew2/2, sz+rod_z) {
-        rx(-90) {
-          explode([0, -fh/2-20, 0]) {
-            spool_rod_holder_stl();
-            myz(10) mxz(ew-screw_clearance_d(ex_screw)-th/2) {
-              tz(th) screw_washer(ex_screw, 10);
-              tz(-3) tnut(M4_tnut);
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-module left_front_upright_assembly()
-  pose([71.8, 0, 131.10], [128.04, -53.03, 201.78])
-  assembly("left_front_upright") {
-  ty(-fd/2) rz(180) {
-    // corner upright
-    txy(-ew2/2, -ew/2) {
-      rz(90) {
-        extrusion(e2040, fh, center = false);
-      }
-      txz(-ew2/2, ew2) explode([0, 0, -80]) {
-        rz(180) rx(90) cast_corner_bracket_assembly();
-      }
-      tz(-th*2) explode([0, 0, -120]) {
-        foot_stl();
-        tz(th) myz(ew/2) screw_up(foot_screw, 12);
-      }
-      if ($label) {
-        txz(20, fh/2) ry(90) label(str(fh, "mm"));
-      }
-    }
-    txz(-ew2, ew) mirror([1,0,0]) explode([0, 0, -110]) {
-      rz(90) ry(90) bottom_corner_unit();
-    }
-  }
-}
-
 module lower_back_frame_assembly()
   pose([82.3, 0, 308], [-199.39, -120.66, 90.82]) assembly("lower_back_frame") {
   lower_back_frame_unit();
@@ -559,227 +402,25 @@ module frame_assembly()
 
 }
 
-module back_top_corner_unit() {
-  back_top_corner_stl();
-  for (p = [[0,0], [0,1], [0,2], [1,0], [2,0]]) {
-    txyz(-p[0]*ew, -p[1]*ew, th) {
-      if (!(p[1] == 0 && p[0] < 2)) {
-        screw(ex_print_screw, 10);
-        rz(p[1] == 0 ? 90 : 0) tz(-7) tnut(M4_tnut);
-      }
-    }
-  }
-}
-
-module back_top_corner_stl() {
-  stl("back_top_corner");
-  color(print_color) render() {
-    difference() {
-      union() {
-        ty(-ew) rrcf([ew, ew*3, th], r = 5);
-        tx(-ew) rrcf([ew*3, ew, th], r = 5);
-      }
-      for (p = [[0,0], [0,1], [0,2], [1,0], [2,0]]) {
-        txyz(-p[0]*ew, -p[1]*ew, -eta/2) {
-          if (p[1] == 0 && p[0] < 2) {
-            cylinder(d = screw_clearance_d(ex_tap_screw), h = th+eta);
-          } else {
-            cylinder(d = screw_clearance_d(ex_print_screw), h = th+eta);
-          }
-        }
-      }
-    }
-  }
-}
-
-module front_top_corner_unit() {
-  front_top_corner_stl();
-  for (p = [[0,0], [0,1], [0,2], [1,0]]) {
-    txyz(-p[0]*ew, p[1]*ew, th) {
-      if (!(p[1] == 0 && p[0] < 2)) {
-        screw(ex_print_screw, 10);
-        rz(p[1] == 0 ? 90 : 0) tz(-7) tnut(M4_tnut);
-      }
-    }
-  }
-}
-
-module front_top_corner_stl() {
-  stl("front_top_corner");
-  color(print_color) render() {
-    difference() {
-      union() {
-        ty(ew) rrcf([ew, ew*3, th], r = 5);
-        tx(-ew/2) rrcf([ew*2, ew, th], r = 5);
-      }
-      for (p = [[0,0], [0,1], [0,2], [1,0]]) {
-        txyz(-p[0]*ew, p[1]*ew, -eta/2) {
-          if (p[1] == 0 && p[0] < 2) {
-            cylinder(d = screw_clearance_d(ex_tap_screw), h = th+eta);
-          } else {
-            cylinder(d = screw_clearance_d(ex_print_screw), h = th+eta);
-          }
-        }
-      }
-    }
-  }
-}
-
-module side_frame_top_corner_stl() {
-  stl("side_frame_top_corner");
-  color(print_color) render() {
-    difference() {
-      union() {
-        ty(ew) rrcf([ew*3.5, ew, th]);
-        myz(ew*1.25) {
-          rrcf([ew, ew*3, th]);
-        }
-      }
-      for (j = [-1, 0, 1]) {
-        ty(j*ew) {
-          for (i = [-1, 0, 1]) {
-            txz(i*ew*1.25, -eta/2) {
-              if (i != 0 || j == 1) {
-                cylinder(d = screw_clearance_d(ex_screw), h = th+eta);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-module bottom_corner_stl() {
-  stl("bottom_corner");
-  color(print_color) render() {
-    difference() {
-      hull() {
-        txy(-ew/2, ew/2) rrcf([ew*3, ew, th], r = 5);
-        rrcf([ew*2, ew*2, th], r = 5);
-      }
-      for (j = [0, 1]) {
-        ty(j*ew-ew/2) {
-          for (i = [-1, 0, 1]) {
-            txz(i*ew-ew/2, -eta/2) {
-              if (i != -1 || j == 1) {
-                cylinder(d = screw_clearance_d(ex_screw), h = th+eta);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-module bottom_corner_unit() {
-  bottom_corner_stl();
-  tz(th) {
-    for (j = [0, 1]) {
-      ty(j*ew-ew/2) {
-        for (i = [-1, 0, 1]) {
-          txz(i*ew-ew/2, -eta/2) {
-            if (i != -1 || j == 1) {
-              screw(ex_print_screw, 10);
-              rz(j == 0 ? 0 : 90) tz(-7) tnut(M4_tnut);
-            }
-          }
-        }
-      }
-    }
-  }
-}
-
-module rail_guard_stl() {
-  stl("rail_guard");
-  color(print_color) render() {
-    difference() {
-      rcc([ew, ew, rail_height(z_rail)]);
-      tz(-eta/2) {
-        cylinder(d = screw_clearance_d(ex_screw), h = rail_height(z_rail)+eta);
-      }
-    }
-  }
-}
-
-module rail_guard_assembly()
-  assembly("rail_guard") {
-  rail_guard_stl();
-  ry(180) {
-    screw_washer(ex_screw, rail_height(z_rail)+6);
-    tz(-rail_height(z_rail)-2) tnut(M4_tnut);
-  }
-}
-
-module foot_stl() {
-  stl("foot");
-  color(flex_print_color) render() {
-    difference() {
-      rcc([40, 20, th*2]);
-      myz(10) {
-        tz(-eta) {
-          cylinder(d = screw_clearance_d(foot_screw), h = th*3);
-          cylinder(d = screw_head_d(foot_screw)*1.1, h = th);
-        }
-      }
-    }
-  }
-}
-
-module spool_rod_holder_stl() {
-  stl("spool_rod_holder");
-  color(print_color) render() {
-    linear_extrude(th) {
-      difference() {
-        square([ew2, ew*2], center = true);
-        myz(10) mxz(ew-screw_clearance_d(ex_screw)-th/2) {
-          circle(d = screw_clearance_d(ex_screw));
-        }
-      }
-    }
-    tz(th*3) {
-      ry(90) {
-        h = (ew-nut_h(M8_nut)-washer_h(M8_washer))*2;
-        tz(-h/2) linear_extrude(h) {
-          difference() {
-            union() {
-              circle(r = 8/2+th);
-              // narrower to allow for washers on extrusion mounting screws
-              tx((8/2+th*2)/2) square([8/2+th*2, 8+th*1.75], center = true);
-            }
-            circle(r = 8/2+0.5);
-          }
-        }
-      }
-    }
-  }
-}
-
 if ($preview) {
   $explode = 1;
   //frame_assembly();
   //frame_with_bed_assembly();
-  //frame_with_x_rail_assembly();
+  frame_with_x_rail_assembly();
   //left_central_and_rear_assembly();
   //left_central_end_assembly();
   //left_end_frame_assembly();
   //left_end_with_z_carriage_rail_assembly();
-  //left_front_upright_assembly();
   //left_lower_end_assembly();
   //left_lower_end_with_z_assembly();
-  //left_rear_upright_assembly();
   //left_upper_end_assembly();
   //lower_back_frame_assembly();
-  //rail_guard_assembly();
   //right_central_and_rear_assembly();
   //right_central_end_assembly();
   //right_end_frame_assembly();
   //right_end_with_z_carriage_rail_assembly();
-  //right_front_upright_assembly();
   //right_lower_end_assembly();
   //right_lower_end_with_z_assembly();
-  //right_rear_upright_assembly();
-  right_upper_end_assembly();
+  //right_upper_end_assembly();
   //xy_combined_assembly();
 }
