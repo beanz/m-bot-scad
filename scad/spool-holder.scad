@@ -32,15 +32,20 @@ module spool_rod_holder_stl() {
 }
 
 module spool_rod_assembly()
-  assembly("spool_rod") {
+    pose([84.4, 0, 39], [182.87, -111.36, -20.4])
+    assembly("spool_rod") {
   tz(-sp_h/2-ew/2) studding(8, sp_h/2+ew*5, center = false);
-  mxy(-sp_h/2-washer_h(M8_penny_washer)-nut_h(M8_nut)) {
-    nut(M8_nut)
-      washer(M8_penny_washer)
-      washer(M8_washer)
-      tz(washer_h(M8_penny_washer)+washer_h(M8_washer)) ball_bearing(BB608)
-      washer(M8_washer)
-      nut(M8_nut);
+  explode([0, 0, -100], true) {
+    mxy(-sp_h/2-washer_h(M8_penny_washer)-nut_h(M8_nut)) {
+      explode([0, 0, -15], true)
+      nut(M8_nut)
+        explode([0, 0, 5], true) washer(M8_penny_washer)
+        explode([0, 0, 5], true) washer(M8_washer)
+        tz(washer_h(M8_penny_washer)+washer_h(M8_washer))
+        explode([0, 0, 5], true) ball_bearing(BB608)
+        explode([0, 0, 5], true) washer(M8_washer)
+        explode([0, 0, 5]) nut(M8_nut);
+    }
   }
 }
 
@@ -63,8 +68,8 @@ module spool_holder_assembly() {
 }
 
 if ($preview) {
-  $explode = 0;
-  //spool_rod_assembly();
+  $explode = 1;
+  spool_rod_assembly();
   //spool_holder_assembly();
   //spool_rod_holder_stl();
 }
