@@ -16,6 +16,13 @@ nut_trap_d = nut_flats_d(screw_nut(car_screw))*1.1;
 
 module x_carriage_assembly()
   pose([119.4, 0, 47.4], [-17.81, -11.44, 10.81]) assembly("x_carriage") {
+  x_carriage_assembly_no_blower();
+  duct_assembly();
+}
+
+module x_carriage_assembly_no_blower()
+    pose([119.4, 0, 47.4], [-17.81, -11.44, 10.81])
+    assembly("x_carriage_no_blower") {
 
   // bottom
   rx(180) tz(ew/2+th/2) x_carriage_mount_stl();
@@ -579,56 +586,101 @@ module duct_stl() {
   p = blower_screw_holes(fan);
   bh = blower_depth(fan);
   be = blower_exit(fan);
-  rz(90) rx(90) mxy(blower_depth(fan/2)) {
-    linear_extrude(th/2) {
+  color(print_color) render() {
+    rz(90) rx(90) mxy(bh/2) {
+      linear_extrude(th/2) {
+        difference() {
+          union() {
+            hull() {
+              txy(p[0][0], p[0][1])
+                circle(d = screw_clearance_d(car_screw)+th);
+              tx(-th/2) square([th*1.5, th]);
+            }
+            hull() {
+              txy(p[1][0], p[1][1])
+                circle(d = screw_clearance_d(car_screw)+th);
+              tx(-th/2) square([be+th, th]);
+            }
+          }
+          for (sp = p) {
+            txy(sp[0], sp[1]) circle(d = screw_clearance_d(car_screw));
+          }
+        }
+      }
+    }
+    ty(be/2) mxz(be/2+clearance) {
+      ty(th/4) rcc([bh+th, th/2-clearance, th/2]);
+    }
+    difference() {
+      union() {
+        tyz(be/2,-th/2) {
+          hull() {
+            tyz(+th/2, th/4) cc([bh+th, be+clearance, th/2]);
+            tyz(-be/2, -th+th/2) cc([bh+th, th/2, th+th/2]);
+          }
+        }
+        hb = [16, 20, 11.5]; // e3d heater block dimensions
+        w = hb[0]+th*4;
+        d = hb[1]+th*3;
+        tyz(-carriage_w(x_car)/2-th*1-e3d_clamp_d()/2+th, -th*1.75) {
+          scale([1, 1.25, 1]) rz(45) rotate_extrude($fn = 4) {
+            tx((w+th)/2) {
+              polygon(points = [[0, th*1.8], [th*1.2, th*1.8],
+                                [th*1.2, th*1.25],
+                                [th*0.6, 0], [th*0.2, 0],
+                                [th*0.75, th*1.2], [th*0.25, th*1.2],
+                                [-th*0.25, 0], [-th*0.75, 0]],
+                      paths = [[0,1,2,3,4,5,6,7,8,0]]);
+            }
+          }
+        }
+      }
+      ty(-clearance) {
+        tyz(be/2,-th/2) {
+          hull() {
+            tz(+th/2) cc([bh, be+clearance, th/2]);
+            #tyz(-be/2, -th+th/2) rx(-30) cc([bh+th/2, th/2, th*0.75]);
+          }
+        }
+      }
+    }
+  }
+}
+
+module duct_mount_stl() {
+  stl("duct_mount");
+  clearance = 0.3;
+  bh = blower_depth(fan);
+  be = blower_exit(fan);
+  color(print_color) {
+    l = carriage_pitch_x(x_car)+screw_clearance_d(car_screw)+th;
+    w = carriage_pitch_y(x_car)/2+screw_clearance_d(car_screw)/2+th/2;
+    d = 20+screw_clearance_d(car_screw)/2+th/2;
+    tyz(-carriage_pitch_y(x_car)/2, -th/2) {
       difference() {
-        union() {
-          hull() {
-            txy(p[0][0], p[0][1]) circle(d = screw_clearance_d(car_screw)+th);
-            tx(-th/2) square([th*1.5, th]);
-          }
-          hull() {
-            txy(p[1][0], p[1][1]) circle(d = screw_clearance_d(car_screw)+th);
-            tx(-th/2) square([be+th, th]);
-          }
-        }
-        for (sp = p) {
-          txy(sp[0], sp[1]) circle(d = screw_clearance_d(car_screw));
+        cc([l, screw_clearance_d(car_screw)+th, th]);
+        myz(carriage_pitch_x(x_car)/2) {
+          cylinder(d = screw_clearance_d(carriage_screw(x_car)),
+                   h = 1000, center = true);
         }
       }
     }
-  }
-  ty(be/2) mxz(be/2+clearance) {
-    ty(th/4) rcc([bh+th, th/2-clearance, th/2]);
-  }
-  render() difference() {
-    union() {
-      tyz(be/2,-th/2) {
-        hull() {
-          tyz(+th/2, th/4) cc([bh+th, be+clearance, th/2]);
-          tyz(-be/2, -th+th/2) cc([bh+th, th/2, th+th/2]);
+    side_th = (l-bh-th)/2;
+    difference() {
+      myz((bh+th+side_th)/2) {
+        tz(-th/2) cc([side_th, w, th]);
+        tz(-d/2) cc([side_th, screw_clearance_d(car_screw)+th, d]);
+        tz(-d) ry(90) {
+        cylinder(d = screw_clearance_d(car_screw)+th,
+          h = side_th, center = true);
         }
       }
-      hb = [16, 20, 11.5]; // e3d heater block dimensions
-      w = hb[0]+th*4;
-      d = hb[1]+th*3;
-      tyz(-carriage_w(x_car)/2-th*1-e3d_clamp_d()/2+th, -th*1.75) {
-        scale([1, 1.25, 1]) rz(45) rotate_extrude($fn = 4) {
-          tx((w+th)/2) {
-            polygon(points = [[0, th*1.8], [th*1.2, th*1.8], [th*1.2, th*1.25],
-                              [th*0.6, 0], [th*0.2, 0],
-                              [th*0.75, th*1.2], [th*0.25, th*1.2],
-                              [-th*0.25, 0], [-th*0.75, 0]],
-                    paths = [[0,1,2,3,4,5,6,7,8,0]]);
+      tz(-d+20/2) {
+        hull() {
+          mxy(20/2) {
+            ry(90) cylinder(d = screw_clearance_d(car_screw),
+                            h = 100, center = true);
           }
-        }
-      }
-    }
-    ty(-clearance) {
-      tyz(be/2,-th/2) {
-        hull() {
-          tz(+th/2) cc([bh, be+clearance, th/2]);
-          #tyz(-be/2, -th+th/2) rx(-30) cc([bh+th/2, th/2, th*0.75]);
         }
       }
     }
@@ -636,19 +688,42 @@ module duct_stl() {
 }
 
 module duct_assembly() {
-  tyz(-(screw_clearance_d(car_screw)+th)/2,
-      -carriage_total_h(x_car)/2-th/4-e3d_height()) {
-    rz(90) rx(90) tz(-blower_depth(fan)/2) blower(fan);
-    duct_stl();
+  explode([0, 0, -10], true) {
+    tyz(-(screw_clearance_d(car_screw)+th)/2,
+        -carriage_total_h(x_car)/2-th/4-e3d_height()) {
+      rz(90) rx(90) tz(-blower_depth(fan)/2) blower(fan);
+      duct_stl();
+    }
+    tz(-carriage_total_h(x_car)+0.5-screw_clearance_d(car_screw)-th)
+      duct_mount_stl();
+    n = screw_nut(car_screw);
+    w = screw_washer(car_screw);
+    mw = carriage_pitch_x(x_car)+screw_clearance_d(car_screw)+th;
+    sl = mw + nut_h(n) + washer_h(w)*2;
+    tz(-carriage_total_h(x_car)+0.5-screw_clearance_d(car_screw)*1.5-th*2) {
+      ry(90) tz(-mw/2) screw_washer_up(car_screw, sl);
+      explode([5, 0, 0], true) ry(90) tz(mw/2) washer(w) {
+        explode([0, 0, 5]) nut(n);
+      }
+    }
+    mcw = screw_clearance_d(car_screw)+th*2;
+    tyz(-carriage_pitch_y(x_car)/2, -carriage_total_h(x_car)+0.5-mcw/2) {
+      myz(carriage_pitch_x(x_car)/2) {
+        tz(mcw/2) screw_washer(car_screw, mcw+nut_h(n) + washer_h(w)*2);
+        explode([0, 0, -5], true) tz(-mcw/2) ry(180) washer(w) {
+          explode([0, 0, +5]) nut(n);
+        }
+      }
+    }
   }
 }
 
 if ($preview) {
-  //$explode = 1;
+  $explode = 1;
   x_carriage_assembly();
-  tz(ew/2) x_carriage_mount_subassembly();
-  hotend_subassembly();
-  duct_assembly();
+  //tz(ew/2) x_carriage_mount_subassembly();
+  //hotend_subassembly();
+  //duct_assembly();
   //x_carriage_front_assembly();
   //x_carriage_rear_assembly();
 }
