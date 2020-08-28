@@ -2,7 +2,9 @@ include <conf.scad>
 include <lazy.scad>
 include <shapes.scad>
 
-module back_top_corner_unit() {
+module back_top_corner_assembly()
+    pose([72.5, 0, 307.8], [-49.59, -38, 24.86])
+    assembly("back_top_corner") {
   back_top_corner_stl();
   for (p = [[0,0], [0,1], [0,2], [1,0], [2,0]]) {
     txyz(-p[0]*ew, -p[1]*ew, th) {
@@ -35,7 +37,9 @@ module back_top_corner_stl() {
   }
 }
 
-module front_top_corner_unit() {
+module front_top_corner_assembly()
+    pose([80.9, 0, 230.1], [-49.59, -38, 24.86])
+    assembly("front_top_corner") {
   front_top_corner_stl();
   for (p = [[0,0], [0,1], [0,2], [1,0]]) {
     txyz(-p[0]*ew, p[1]*ew, th) {
@@ -116,7 +120,9 @@ module bottom_corner_stl() {
   }
 }
 
-module bottom_corner_unit() {
+module bottom_corner_assembly()
+    pose([104.7, 0, 162.9], [-49.59, -38, 24.86])
+    assembly("bottom_corner") {
   bottom_corner_stl();
   tz(th) {
     for (j = [0, 1]) {
@@ -132,4 +138,11 @@ module bottom_corner_unit() {
       }
     }
   }
+}
+
+if ($preview) {
+  $explode = 1;
+  //back_top_corner_assembly();
+  //front_top_corner_assembly();
+  bottom_corner_assembly();
 }

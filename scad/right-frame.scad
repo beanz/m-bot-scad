@@ -25,7 +25,7 @@ module right_front_upright_assembly()
         txz(20, fh/2) ry(90) label(str(fh, "mm"));
       }
     }
-    txz(-ew2, ew) explode([0,0,-110]) rz(-90) ry(90) bottom_corner_unit();
+    txz(-ew2, ew) explode([0,0,-110]) rz(-90) ry(90) bottom_corner_assembly();
     mirror([0, 1, 0]) spool_holder_assembly();
   }
 }
@@ -52,7 +52,7 @@ module right_rear_upright_assembly()
       }
     }
     txz(-ew2, ew) explode([0, 0, -110]) {
-      mirror([1, 0, 0]) rz(90) ry(90) bottom_corner_unit();
+      mirror([1, 0, 0]) rz(90) ry(90) bottom_corner_assembly();
     }
     spool_holder_assembly();
   }

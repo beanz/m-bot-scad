@@ -152,8 +152,8 @@ module right_upper_end_assembly()
       }
     }
   }
-  txyz(-ew/2, fd/2-ew/2, fh) explode([0, 180, 0]) back_top_corner_unit();
-  txyz(-ew/2, -fd/2+ew/2, fh) explode([0, -180, 0]) front_top_corner_unit();
+  txyz(-ew/2, fd/2-ew/2, fh) explode([0, 180, 0]) back_top_corner_assembly();
+  txyz(-ew/2, -fd/2+ew/2, fh) explode([0, -180, 0]) front_top_corner_assembly();
 
   tyz(-60, fh-ew/2) explode([0, -180, 0]) {
     ry(90) rx(-90) titan_mount_assembly();
@@ -202,10 +202,10 @@ module left_upper_end_assembly()
       }
     }
     txyz(-ew/2, fd/2-ew/2, fh) {
-      explode([0, 140, 0]) back_top_corner_unit();
+      explode([0, 140, 0]) back_top_corner_assembly();
     }
     txyz(-ew/2, -fd/2+ew/2, fh) {
-      explode([0, -140, 0]) front_top_corner_unit();
+      explode([0, -140, 0]) front_top_corner_assembly();
     }
   }
 }
@@ -224,10 +224,12 @@ module right_lower_end_with_z_assembly()
   }
   tz(ew) {
     ty(fd/2-ew) {
-      explode([0, 40, 0]) ry(90) bottom_corner_unit();
+      explode([0, 40, 0]) ry(90) bottom_corner_assembly();
     }
     ty(-(fd/2-ew)) {
-      explode([0, -fd/2+20, 0]) ry(90) mirror([0, 1, 0]) bottom_corner_unit();
+      explode([0, -fd/2+20, 0]) ry(90) mirror([0, 1, 0]) {
+        bottom_corner_assembly();
+      }
     }
   }
 }
@@ -246,10 +248,10 @@ module left_lower_end_with_z_assembly()
   }
   tz(ew) {
     ty(fd/2-ew) {
-      explode([0, 40, 0]) ry(-90) mirror([1,0,0]) bottom_corner_unit();
+      explode([0, 40, 0]) ry(-90) mirror([1,0,0]) bottom_corner_assembly();
     }
     ty(-(fd/2-ew)) {
-      explode([0, -fd/2-60, 0]) rz(180) ry(90) bottom_corner_unit();
+      explode([0, -fd/2-60, 0]) rz(180) ry(90) bottom_corner_assembly();
     }
   }
 }
