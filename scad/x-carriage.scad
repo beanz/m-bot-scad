@@ -15,12 +15,12 @@ belt_clamp_offset = belt_h/2+th/2+screw_clearance_d(car_screw)/2;
 nut_trap_d = nut_flats_d(screw_nut(car_screw))*1.1;
 
 module x_carriage_assembly()
-  pose([119.4, 0, 47.4], [-17.81, -11.44, 10.81]) assembly("x_carriage") {
-  x_carriage_assembly_no_blower();
+  pose([74.70, 0, 253.6], [23.96, -19.43, -37.23]) assembly("x_carriage") {
+  x_carriage_no_blower_assembly();
   duct_assembly();
 }
 
-module x_carriage_assembly_no_blower()
+module x_carriage_no_blower_assembly()
     pose([119.4, 0, 47.4], [-17.81, -11.44, 10.81])
     assembly("x_carriage_no_blower") {
 
@@ -709,17 +709,17 @@ module duct_assembly() {
     mcw = screw_clearance_d(car_screw)+th*2;
     tyz(-carriage_pitch_y(x_car)/2, -carriage_total_h(x_car)+0.5-mcw/2) {
       myz(carriage_pitch_x(x_car)/2) {
-        tz(mcw/2) screw_washer(car_screw, mcw+nut_h(n) + washer_h(w)*2);
-        explode([0, 0, -5], true) tz(-mcw/2) ry(180) washer(w) {
+        tz(mcw/2) explode([0, 0, +15], true) washer(w) {
           explode([0, 0, +5]) nut(n);
         }
+        tz(-mcw/2) screw_washer_up(car_screw, mcw+nut_h(n) + washer_h(w)*2);
       }
     }
   }
 }
 
 if ($preview) {
-  $explode = 1;
+  //$explode = 1;
   x_carriage_assembly();
   //tz(ew/2) x_carriage_mount_subassembly();
   //hotend_subassembly();
