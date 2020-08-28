@@ -1,0 +1,13 @@
+left_front_upright_assembly:
+Vitamins:
+  1 Extrusion E2040 x 430mm
+  5 Screw M4 flanged x 10mm
+  2 Screw M5 flanged x 12mm
+  5 Nut M4 sliding T
+
+Printed:
+  1 bottom_corner.stl
+  1 foot.stl
+
+Assemblies:
+  1 cast_corner_bracket_assembly

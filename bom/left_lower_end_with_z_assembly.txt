@@ -1,0 +1,12 @@
+left_lower_end_with_z_assembly:
+Vitamins:
+ 10 Screw M4 flanged x 10mm
+ 10 Nut M4 sliding T
+
+Printed:
+  2 bottom_corner.stl
+
+Assemblies:
+  1 cast_corner_bracket_assembly
+  1 left_lower_end_assembly
+  1 left_z_axis_rail_assembly

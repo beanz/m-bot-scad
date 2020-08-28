@@ -1,0 +1,7 @@
+left_end_frame_assembly:
+Vitamins:
+  2 Screw M5 flanged x 12mm
+
+Assemblies:
+  1 left_central_and_rear_assembly
+  1 left_front_upright_assembly

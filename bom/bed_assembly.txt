@@ -1,0 +1,11 @@
+bed_assembly:
+Vitamins:
+  1 aluminium plate 314mm x 214mm x 3mm
+  2 aluminium flat bar 20mm x 260mm x 5mm
+  4 Nut M5 x 4mm 
+  4 Screw M5 cap x 14mm
+  4 Swiss picture clip UKPFS1008_10 11mm
+
+CNC cut:
+  2 aluminium_flat_bar.dxf
+  1 bed.dxf

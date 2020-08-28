@@ -1,0 +1,7 @@
+right_central_and_rear_assembly:
+Vitamins:
+  2 Screw M5 flanged x 12mm
+
+Assemblies:
+  1 right_central_end_assembly
+  1 right_rear_upright_assembly

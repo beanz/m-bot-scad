@@ -1,0 +1,6 @@
+left_central_end_assembly:
+
+Assemblies:
+  1 cast_corner_bracket_assembly
+  1 left_lower_end_with_z_assembly
+  1 left_upper_end_assembly

@@ -1,0 +1,9 @@
+frame_with_spool_holder_assembly:
+Vitamins:
+  4 Nut M8 x 6.5mm 
+  2 Filament spool 200 x 60
+  4 Washer  M8 x 17mm x 1.6mm
+
+Assemblies:
+  1 frame_with_bed_assembly
+  2 spool_rod_assemblies

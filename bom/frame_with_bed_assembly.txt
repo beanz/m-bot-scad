@@ -1,0 +1,5 @@
+frame_with_bed_assembly:
+
+Assemblies:
+  1 frame_with_x_rail_assembly
+  1 z_axis_assembly
