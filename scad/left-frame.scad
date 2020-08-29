@@ -26,7 +26,7 @@ module left_front_upright_assembly()
       }
     }
     txz(-ew2, ew) mirror([1,0,0]) explode([0, 0, -110]) {
-      rz(90) ry(90) bottom_corner_unit();
+      rz(90) ry(90) bottom_corner_assembly();
     }
   }
 }
@@ -54,7 +54,7 @@ module left_rear_upright_assembly()
       }
     }
     txz(-ew2, ew) explode([0, 0, -110]) {
-      mirror([1,0,0]) rz(90) ry(90) bottom_corner_unit();
+      mirror([1,0,0]) rz(90) ry(90) bottom_corner_assembly();
     }
   }
   txyz(ew2, fd/2-ew/2, fh-ew2/2-ew) {

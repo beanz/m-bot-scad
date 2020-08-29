@@ -134,26 +134,14 @@ module right_upper_end_assembly()
   mxz(fd/2) {
     tyz(-ew*1.5, fh-ew*1.75) ry(90) {
       explode([0, 180, 0]) {
-        side_top_corner_stl();
-        tz(th) {
-          for (j = [-1, 0, 1]) {
-            ty(j*ew) {
-              for (i = [-1, 0, 1]) {
-                txz(i*ew*1.25, -eta/2) {
-                  if (i != 0 || j == 1) {
-                    screw(ex_print_screw, 10);
-                    rz(j == 1 ? 90 : 0) tz(-7) tnut(M4_tnut);
-                  }
-                }
-              }
-            }
-          }
-        }
+        side_top_corner_assembly();
       }
     }
   }
-  txyz(-ew/2, fd/2-ew/2, fh) explode([0, 180, 0]) back_top_corner_unit();
-  txyz(-ew/2, -fd/2+ew/2, fh) explode([0, -180, 0]) front_top_corner_unit();
+  txyz(-ew/2, fd/2-ew/2, fh) explode([0, 180, 0])
+    right_back_top_corner_assembly();
+  txyz(-ew/2, -fd/2+ew/2, fh) explode([0, -180, 0])
+    right_front_top_corner_assembly();
 
   tyz(-60, fh-ew/2) explode([0, -180, 0]) {
     ry(90) rx(-90) titan_mount_assembly();
@@ -179,34 +167,21 @@ module left_upper_end_assembly()
       }
     }
   }
+  // this assembly has 180 degree rotational symmetry so mirror is safe
   mirror([1,0,0]) {
     mxz(fd/2) {
       tyz(-ew*1.5, fh-ew*1.75) ry(90) {
         explode([0, 90, 0]) {
-          side_top_corner_stl();
-          tz(th) {
-            for (j = [-1, 0, 1]) {
-              ty(j*ew) {
-                for (i = [-1, 0, 1]) {
-                  txz(i*ew*1.25, -eta/2) {
-                    if (i != 0 || j == 1) {
-                      screw(ex_print_screw, 10);
-                      rz(j == 1 ? 90 : 0) tz(-7) tnut(M4_tnut);
-                    }
-                  }
-                }
-              }
-            }
-          }
+          side_top_corner_assembly();
         }
       }
     }
-    txyz(-ew/2, fd/2-ew/2, fh) {
-      explode([0, 140, 0]) back_top_corner_unit();
-    }
-    txyz(-ew/2, -fd/2+ew/2, fh) {
-      explode([0, -140, 0]) front_top_corner_unit();
-    }
+  }
+  txyz(ew/2, fd/2-ew/2, fh) {
+    explode([0, 140, 0]) left_back_top_corner_assembly();
+  }
+  txyz(ew/2, -fd/2+ew/2, fh) {
+    explode([0, -140, 0]) left_front_top_corner_assembly();
   }
 }
 
@@ -224,10 +199,12 @@ module right_lower_end_with_z_assembly()
   }
   tz(ew) {
     ty(fd/2-ew) {
-      explode([0, 40, 0]) ry(90) bottom_corner_unit();
+      explode([0, 40, 0]) ry(90) bottom_corner_assembly();
     }
     ty(-(fd/2-ew)) {
-      explode([0, -fd/2+20, 0]) ry(90) mirror([0, 1, 0]) bottom_corner_unit();
+      explode([0, -fd/2+20, 0]) ry(90) {
+        reversed_bottom_corner_assembly();
+      }
     }
   }
 }
@@ -246,10 +223,10 @@ module left_lower_end_with_z_assembly()
   }
   tz(ew) {
     ty(fd/2-ew) {
-      explode([0, 40, 0]) ry(-90) mirror([1,0,0]) bottom_corner_unit();
+      explode([0, 40, 0]) rz(180) ry(90) reversed_bottom_corner_assembly();
     }
     ty(-(fd/2-ew)) {
-      explode([0, -fd/2-60, 0]) rz(180) ry(90) bottom_corner_unit();
+      explode([0, -fd/2-60, 0]) rz(180) ry(90) bottom_corner_assembly();
     }
   }
 }
@@ -403,16 +380,16 @@ module frame_assembly()
 }
 
 if ($preview) {
-  $explode = 1;
+  $explode = 0;
   //frame_assembly();
   //frame_with_bed_assembly();
-  frame_with_x_rail_assembly();
+  //frame_with_x_rail_assembly();
   //left_central_and_rear_assembly();
   //left_central_end_assembly();
   //left_end_frame_assembly();
   //left_end_with_z_carriage_rail_assembly();
   //left_lower_end_assembly();
-  //left_lower_end_with_z_assembly();
+  left_lower_end_with_z_assembly();
   //left_upper_end_assembly();
   //lower_back_frame_assembly();
   //right_central_and_rear_assembly();

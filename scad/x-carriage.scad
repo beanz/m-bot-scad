@@ -127,10 +127,10 @@ module x_carriage_rear_assembly()
   x_carriage_rear_stl();
   n = screw_nut(car_screw);
   txz(-carriage_l(x_car)/2, carriage_total_h(x_car)/2+microswitch_l(ms)/2) {
-    explode([0, -10, 0]) txy(-14, -2) rz(90) ry(-90) microswitch(ms);
+    explode([0, -10, 0]) txy(-19, -2) rz(90) ry(-90) microswitch(ms);
     explode([0, 5, 0], true) {
       ty(th) x_endstop_mount_stl();
-      txy(-14, th+2+0.5) {
+      txy(-19, th+2+0.5) {
         rz(90) ry(-90) microswitch_hole_positions(ms) {
           screw_washer_up(microswitch_screw, 2+th+microswitch_d(ms));
         }
@@ -506,15 +506,15 @@ module x_endstop_mount_stl() {
   color(print_color) render() {
     difference() {
       union() {
-        tx(-10+th/2) cc([20, th, microswitch_l(ms)]);
-        txy(-th*2.5, -1/2) {
+        tx(-12.5+th/2) cc([25, th, microswitch_l(ms)]);
+        txy(-th*3.5, -1/2) {
           cc([microswitch_h(ms), th+1, microswitch_l(ms)]);
         }
         txz(th, -(x_car_h/2+th)/2+microswitch_l(ms)/2) {
           cc([th*2, th, x_car_h/2+th]);
         }
       }
-      tx(-14) rz(90) ry(-90) microswitch_hole_positions(ms) {
+      tx(-19) rz(90) ry(-90) microswitch_hole_positions(ms) {
         cylinder(d = screw_clearance_d(microswitch_screw),
                  h = 1000, center = true);
       }
@@ -537,13 +537,15 @@ module x_endstop_mount_stl() {
 }
 
 module x_carriage_mount_subassembly() {
+  w = screw_washer(car_screw);
   explode([0, 0, 5], true) {
     // top
     tz(carriage_total_h(x_car)) x_carriage_mount_stl();
     // screws for MGN carriage
     carriage_hole_positions(x_car) {
       tz(screw_clearance_d(car_screw)+th) {
-        screw_washer(carriage_screw(x_car), th+carriage_screw_depth(x_car));
+        screw_washer(carriage_screw(x_car),
+                     th+carriage_screw_depth(x_car)+washer_h(w)+3);
       }
     }
   }
@@ -565,9 +567,9 @@ module hotend_subassembly() {
             myz(10) {
               rx(-90) {
                 screw_washer_up(car_screw,
-                                th*3+clamp_d+0.5+washer_h(w)+nut_h(n));
-                tz(th*3+clamp_d+0.5) explode([0, 0, 40]) washer(w);
-                tz(th*3+clamp_d+0.5) explode([0, 0, 45]) nut(n);
+                                th*3+clamp_d+0.5+washer_h(w)+nut_h(n)+th);
+                tz(th*3+clamp_d+0.5+th) explode([0, 0, 40]) washer(w);
+                tz(th*3+clamp_d+0.5+th+washer_h(w)) explode([0, 0, 45]) nut(n);
               }
             }
           }
@@ -639,7 +641,7 @@ module duct_stl() {
         tyz(be/2,-th/2) {
           hull() {
             tz(+th/2) cc([bh, be+clearance, th/2]);
-            #tyz(-be/2, -th+th/2) rx(-30) cc([bh+th/2, th/2, th*0.75]);
+            tyz(-be/2, -th+th/2) rx(-30) cc([bh+th/2, th/2, th*0.75]);
           }
         }
       }
@@ -655,29 +657,51 @@ module duct_mount_stl() {
   color(print_color) {
     l = carriage_pitch_x(x_car)+screw_clearance_d(car_screw)+th;
     w = carriage_pitch_y(x_car)/2+screw_clearance_d(car_screw)/2+th/2;
-    d = 20+screw_clearance_d(car_screw)/2+th/2;
-    tyz(-carriage_pitch_y(x_car)/2, -th/2) {
-      difference() {
-        cc([l, screw_clearance_d(car_screw)+th, th]);
-        myz(carriage_pitch_x(x_car)/2) {
-          cylinder(d = screw_clearance_d(carriage_screw(x_car)),
-                   h = 1000, center = true);
-        }
-      }
-    }
+    d = 10+screw_clearance_d(car_screw)/2+th/2;
     side_th = (l-bh-th)/2;
     difference() {
-      myz((bh+th+side_th)/2) {
-        tz(-th/2) cc([side_th, w, th]);
-        tz(-d/2) cc([side_th, screw_clearance_d(car_screw)+th, d]);
-        tz(-d) ry(90) {
-        cylinder(d = screw_clearance_d(car_screw)+th,
-          h = side_th, center = true);
+      union() {
+        tyz(-11, -th/2) cc([l, th*3, th]);
+        ty(-carriage_w(x_car)/2) {
+          hull() {
+            tz(-clamp_h/2+1) {
+              mxy(1+(screw_clearance_d(hotend_mount_screw)+th/2)/2) {
+                myz(10) {
+                  rx(90) {
+                    cylinder(d = screw_clearance_d(hotend_mount_screw)+th/2,
+                             h = th);
+                  }
+                }
+              }
+            }
+          }
+        }
+        myz((bh+th+side_th)/2) {
+          tz(-th/2) cc([side_th, w, th]);
+          tz(-d/2) cc([side_th, screw_clearance_d(car_screw)+th, d]);
+          tz(-d) ry(90) {
+            cylinder(d = screw_clearance_d(car_screw)+th,
+                     h = side_th, center = true);
+          }
         }
       }
-      tz(-d+20/2) {
+      ty(-carriage_w(x_car)/2) {
+        tz(-(clamp_top_h+clamp_mid_h/2)+2) {
+          myz(10) {
+            rx(90) {
+              cylinder(d = screw_clearance_d(hotend_mount_screw),
+                       h = th*3, center = true);
+            }
+            rx(-90) {
+              cylinder(d = washer_od(screw_washer(hotend_mount_screw))+0.5,
+                       h = th);
+            }
+          }
+        }
+      }
+      tz(-d+10/2) {
         hull() {
-          mxy(20/2) {
+          mxy(10/2) {
             ry(90) cylinder(d = screw_clearance_d(car_screw),
                             h = 100, center = true);
           }
@@ -695,6 +719,7 @@ module duct_assembly() {
       duct_stl();
     }
     tz(-carriage_total_h(x_car)+0.5-screw_clearance_d(car_screw)-th)
+
       duct_mount_stl();
     n = screw_nut(car_screw);
     w = screw_washer(car_screw);
@@ -707,24 +732,16 @@ module duct_assembly() {
       }
     }
     mcw = screw_clearance_d(car_screw)+th*2;
-    tyz(-carriage_pitch_y(x_car)/2, -carriage_total_h(x_car)+0.5-mcw/2) {
-      myz(carriage_pitch_x(x_car)/2) {
-        tz(mcw/2) explode([0, 0, +15], true) washer(w) {
-          explode([0, 0, +5]) nut(n);
-        }
-        tz(-mcw/2) screw_washer_up(car_screw, mcw+nut_h(n) + washer_h(w)*2);
-      }
-    }
   }
 }
 
 if ($preview) {
   //$explode = 1;
-  x_carriage_assembly();
+  //x_carriage_assembly();
   //tz(ew/2) x_carriage_mount_subassembly();
   //hotend_subassembly();
   //duct_assembly();
   //x_carriage_front_assembly();
-  //x_carriage_rear_assembly();
+  x_carriage_rear_assembly();
 }
 
