@@ -24,12 +24,7 @@ module main_assembly()
   duet_assembly();
 
   // add (heavy) PSU last
-  txyz(-fw/2+psu_l/2+ew2+80, fd/2-th, ew2+psu_w/2+th) {
-    explode([100, 0, 0], offset = [-psu_l/2, 0, 0]) {
-      rx(90) psu(PSU_S_350);
-    }
-    psu_mount_screws(); // TOFIX cover mount screws?
-  }
+  psu_subassembly();
 }
 
 module duet_assembly()

@@ -122,7 +122,7 @@ module z_carriage_rail_assembly() {
       }
       mxz(ew/2) {
         mxy(ew/2+th) {
-          screw_washer(ex_screw, ex_screw_l);
+          screw_and_washer(ex_screw, ex_screw_l);
         }
       }
       explode([0, -pd/2-30, 0]) mxz(ew/2) {
@@ -204,7 +204,7 @@ module z_axis_assembly()
     tz(ew/2) {
       myz((pw+14-20)/2) {
         tz(th) mxz((pd+ew*2)/2) {
-          explode([0, 0, 5], true) screw_washer(ex_screw, ex_screw_l);
+          explode([0, 0, 5], true) screw_and_washer(ex_screw, ex_screw_l);
           rz(90) tz(-10) explode([0, -120, 0]) tnut(M4_tnut);
         }
       }
@@ -269,13 +269,13 @@ module z_motor_mount_assembly()
     z_motor_mount_stl();
     mxz(ew/2) {
       tz(th) {
-        screw_washer(ex_screw, ex_screw_l);
+        screw_and_washer(ex_screw, ex_screw_l);
         tz(-8) tnut(M5_tnut);
       }
       txz(-ew+th, -ew) {
         mxy(ew/2) {
           ry(-90) {
-            screw_washer(ex_screw, ex_screw_l);
+            screw_and_washer(ex_screw, ex_screw_l);
             tz(-8) tnut(M5_tnut);
           }
         }

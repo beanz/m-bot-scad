@@ -360,7 +360,7 @@ module y_endstop_assembly()
   txy(-ew/2, microswitch_h(ms)/4) {
     y_endstop_mount_stl();
     txyz(1, -th*2.5, th) {
-      screw_washer(ex_screw, ex_screw_l);
+      screw_and_washer(ex_screw, ex_screw_l);
       tz(-8) explode([0, 0, -5]) tnut(M4_tnut);
     }
     tx(ew/2-microswitch_d(ms)/2-th-0.5) {
@@ -380,7 +380,7 @@ module left_y_carriage_assembly()
   // extrusion mount screw
   txz(ew/2+y_car_w/2+th, -ew/2) {
     mxy(ew/2+th) {
-      screw_washer(ex_screw, ex_screw_l);
+      screw_and_washer(ex_screw, ex_screw_l);
       tz(-8) rz(90) tnut(M4_tnut);
     }
   }
@@ -421,7 +421,7 @@ module right_y_carriage_assembly()
   // extrusion mount screw
   txz(-ew/2-y_car_w/2-th, -ew/2) {
     mxy(ew/2+th) {
-      screw_washer(ex_screw, ex_screw_l);
+      screw_and_washer(ex_screw, ex_screw_l);
       tz(-8) rz(90) tnut(M4_tnut);
     }
   }

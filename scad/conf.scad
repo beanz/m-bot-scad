@@ -192,6 +192,7 @@ bed_level_screw = M5_cap_screw;
 microswitch_screw = M3_cap_screw; // Tap the microswitch
 foot_screw = ex_tap_screw;
 psu_screw = M4_cap_screw;
+psu_low_screw = M4_flanged_screw;
 opulley = GT2x20ob_pulley; // TOFIX: GT2x20_ooznest_pulley;
 
 z_rail = MGN15;
