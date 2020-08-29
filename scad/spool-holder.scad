@@ -58,7 +58,7 @@ module spool_holder_assembly() {
         explode([0, fh/2+20, 0]) {
           spool_rod_holder_stl();
           myz(10) mxz(ew-screw_clearance_d(ex_screw)-th/2) {
-            tz(th) screw_washer(ex_screw, 10);
+            tz(th) screw_washer(ex_screw, ex_screw_l);
             tz(-3) tnut(M4_tnut);
           }
         }

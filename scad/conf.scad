@@ -184,6 +184,7 @@ idler_screw = M3_cap_screw;
 motor_screw = M3_cap_screw;
 pcb_mount_screw = M3_cap_screw;
 ex_screw = M4_cap_screw;
+ex_screw_l = 10;
 nema_plate_screw = M5_low_profile_screw;
 ex_print_screw = M4_flanged_screw;
 ex_tap_screw = M5_flanged_screw;
