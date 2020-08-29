@@ -2,9 +2,23 @@ include <conf.scad>
 include <lazy.scad>
 include <shapes.scad>
 
-module back_top_corner_assembly()
-    pose([72.5, 0, 307.8], [-49.59, -38, 24.86])
-    assembly("back_top_corner") {
+//! The two larger (5mm) holes should be empty.
+
+module right_back_top_corner_assembly()
+    pose([102.6, 0, 40.4], [22.11, -38.5, -1.33])
+    assembly("right_back_top_corner") {
+  back_top_corner_assembly();
+}
+
+//! The two larger (5mm) holes should be empty.
+
+module left_back_top_corner_assembly()
+    pose([102.6, 0, 40.4], [30, -32.6, 1.45])
+    assembly("left_back_top_corner") {
+  mirror([1, 0, 0]) back_top_corner_assembly();
+}
+
+module back_top_corner_assembly() {
   back_top_corner_stl();
   for (p = [[0,0], [0,1], [0,2], [1,0], [2,0]]) {
     txyz(-p[0]*ew, -p[1]*ew, th) {
@@ -37,9 +51,23 @@ module back_top_corner_stl() {
   }
 }
 
-module front_top_corner_assembly()
-    pose([80.9, 0, 230.1], [-49.59, -38, 24.86])
-    assembly("front_top_corner") {
+//! The two larger (5mm) holes should be empty.
+
+module right_front_top_corner_assembly()
+    pose([102.6, 0, 40.4], [30, -32.6, 1.45])
+    assembly("right_front_top_corner") {
+  front_top_corner_assemlby();
+}
+
+//! The two larger (5mm) holes should be empty.
+
+module left_front_top_corner_assembly()
+    pose([102.6, 0, 40.4], [30, -32.6, 1.45])
+    assembly("left_front_top_corner") {
+  mirror([1, 0, 0]) front_top_corner_assemlby();
+}
+
+module front_top_corner_assemlby() {
   front_top_corner_stl();
   for (p = [[0,0], [0,1], [0,2], [1,0]]) {
     txyz(-p[0]*ew, p[1]*ew, th) {
@@ -143,6 +171,10 @@ module bottom_corner_stl() {
 module bottom_corner_assembly()
     pose([104.7, 0, 162.9], [-49.59, -38, 24.86])
     assembly("bottom_corner") {
+  bottom_corner_unit();
+}
+
+module bottom_corner_unit() {
   bottom_corner_stl();
   tz(th) {
     for (j = [0, 1]) {
@@ -160,10 +192,19 @@ module bottom_corner_assembly()
   }
 }
 
+module reversed_bottom_corner_assembly()
+    pose([104.7, 0, 162.9], [-49.59, -38, 24.86])
+    assembly("reversed_bottom_corner") {
+  mirror([0, 1, 0]) bottom_corner_unit();
+}
+
 if ($preview) {
   $explode = 1;
-  //back_top_corner_assembly();
-  //front_top_corner_assembly();
-  side_top_corner_assembly();
+  //right_back_top_corner_assembly();
+  //left_back_top_corner_assembly();
+  //right_front_top_corner_assembly();
+  //left_front_top_corner_assembly();
+  //side_top_corner_assembly();
   //bottom_corner_assembly();
+  reversed_bottom_corner_assembly();
 }
