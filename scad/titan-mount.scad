@@ -43,7 +43,7 @@ module titan_mount_assembly()
     translate([0, 0, 14.5]) %cube([40, 40, 26], center = true);
     mxy((l-screw_clearance_d(ex_screw)-th)/2) {
       ty(nw/2) rx(90) {
-        screw_washer(ex_screw, ex_screw_l);
+        screw_and_washer(ex_screw, ex_screw_l);
         tz(-7) tnut(M4_tnut);
       }
     }

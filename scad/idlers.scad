@@ -104,14 +104,14 @@ module back_right_idler_assembly()
     tx(idler_offset) {
       mxy(ew*1) {
         rx(-90) {
-          screw_washer(ex_screw, ex_screw_l);
+          screw_and_washer(ex_screw, ex_screw_l);
           tz(-8) tnut(M4_tnut);
         }
       }
     }
     txz(idler_offset-ew, ew) {
       rx(-90) {
-        screw_washer(ex_screw, ex_screw_l);
+        screw_and_washer(ex_screw, ex_screw_l);
         tz(-8) rz(90) tnut(M4_tnut);
       }
     }
@@ -146,14 +146,14 @@ module back_left_idler_assembly()
     tx(-idler_offset) {
       mxy(ew*1) {
         rx(-90) {
-          screw_washer(ex_screw, ex_screw_l);
+          screw_and_washer(ex_screw, ex_screw_l);
           tz(-8) tnut(M4_tnut);
         }
       }
     }
     txz(idler_offset-ew, ew) {
       rx(-90) {
-        screw_washer(ex_screw, ex_screw_l);
+        screw_and_washer(ex_screw, ex_screw_l);
         tz(-8) rz(90) tnut(M4_tnut);
       }
     }

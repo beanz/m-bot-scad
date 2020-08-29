@@ -52,14 +52,14 @@ module right_motor_assembly() assembly("right_motor") {
     right_motor_mount_stl();
     rz(45) tx(motor_hole_offset) {
       mxz(ew-th/2-screw_clearance_d(ex_screw)/2) {
-        tz(th) screw_washer(ex_screw, ex_screw_l);
+        tz(th) screw_and_washer(ex_screw, ex_screw_l);
         tz(-3) tnut(M4_tnut);
       }
     }
     tx(motor_hole_offset-(ew-th)/2) {
       rz(-45) txz(ew, ew/2+th) {
         rx(90) tz(th/2) {
-          screw_washer(ex_screw, ex_screw_l);
+          screw_and_washer(ex_screw, ex_screw_l);
           tz(-3-th) tnut(M4_tnut);
 
         }
@@ -89,14 +89,14 @@ module left_motor_assembly() assembly("left_motor") {
     left_motor_mount_stl();
     rz(-45) tx(motor_hole_offset) {
       mxz(ew-th/2-screw_clearance_d(ex_screw)/2) {
-        tz(th) screw_washer(ex_screw, ex_screw_l);
+        tz(th) screw_and_washer(ex_screw, ex_screw_l);
         tz(-3) tnut(M4_tnut);
       }
     }
     tx(motor_hole_offset-(ew-th)/2) {
       rz(45) txz(ew, ew/2+th) {
         rx(-90) tz(th/2) {
-          screw_washer(ex_screw, ex_screw_l);
+          screw_and_washer(ex_screw, ex_screw_l);
           tz(-3-th) tnut(M4_tnut);
         }
       }

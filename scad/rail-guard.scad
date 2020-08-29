@@ -16,7 +16,7 @@ module rail_guard_assembly()
   assembly("rail_guard") {
   rail_guard_stl();
   ry(180) {
-    screw_washer(ex_screw, rail_height(z_rail)+6);
+    screw_and_washer(ex_screw, rail_height(z_rail)+6);
     tz(-rail_height(z_rail)-2) tnut(M4_tnut);
   }
 }

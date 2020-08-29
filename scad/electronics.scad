@@ -91,7 +91,7 @@ module socket_mount_assembly() {
   iec_socket_mount_stl();
   tz(-ew2/2-th) mxy(ew2/2+th) {
     ty(iec_socket_cut_out_h()/2+ew/2) myz(ew) {
-      screw_washer(ex_screw, ex_screw_l);
+      screw_and_washer(ex_screw, ex_screw_l);
     }
   }
 }
@@ -171,7 +171,7 @@ module psu_mount_assembly() {
       psu_cover_stl();
       txyz(-psu_cover_l+ew*1.5, -ew, -(psu_w+th*1.5+ew)/2) myz(ew) {
         rx(90) {
-          screw_washer(ex_screw, ex_screw_l);
+          screw_and_washer(ex_screw, ex_screw_l);
           if (exploded() == 0) {
             tz(-7) rz(90) tnut(M4_tnut);
           }
@@ -200,7 +200,7 @@ module psu_mount_assembly() {
       psu_mount_stl();
       tyz(-ew, -psu_w/2-th-ew2/2) mxy(20/2) {
         rx(90) {
-          screw_washer(ex_screw, ex_screw_l);
+          screw_and_washer(ex_screw, ex_screw_l);
           if (exploded() == 0) {
             tz(-7) rz(90) tnut(M4_tnut);
           }
@@ -217,7 +217,7 @@ module duet_mount_assembly()
     tx(-duet_mount_w/2+ew/2) {
       mxz(100/2) {
         rx(180) {
-          screw_washer(ex_screw, ex_screw_l);
+          screw_and_washer(ex_screw, ex_screw_l);
           tz(-10) tnut(M4_tnut);
         }
       }
@@ -226,7 +226,7 @@ module duet_mount_assembly()
       ty(-(fd/2-ew*1.5)/2+th) {
         myz(duet_mount_pitch/2) {
           rx(-90) {
-            screw_washer(ex_screw, ex_screw_l);
+            screw_and_washer(ex_screw, ex_screw_l);
             rz(90) tz(-8) tnut(M4_tnut);
           }
         }
@@ -235,7 +235,7 @@ module duet_mount_assembly()
         myz(duet_mount_pitch/2) {
           explode([0, 0, -20], offset = [0, th/2, 0]) {
             rx(90) {
-              screw_washer(ex_screw, ex_screw_l);
+              screw_and_washer(ex_screw, ex_screw_l);
               rz(90) tz(-8) tnut(M4_tnut);
             }
           }
