@@ -15,14 +15,8 @@ belt_clamp_offset = belt_h/2+th/2+screw_clearance_d(car_screw)/2;
 nut_trap_d = nut_flats_d(screw_nut(car_screw))*1.1;
 
 module x_carriage_assembly()
-  pose([74.70, 0, 253.6], [23.96, -19.43, -37.23]) assembly("x_carriage") {
-  x_carriage_no_blower_assembly();
-  duct_assembly();
-}
-
-module x_carriage_no_blower_assembly()
     pose([119.4, 0, 47.4], [-17.81, -11.44, 10.81])
-    assembly("x_carriage_no_blower") {
+    assembly("x_carriage") {
 
   // bottom
   rx(180) tz(ew/2+th/2) x_carriage_mount_stl();
@@ -711,37 +705,50 @@ module duct_mount_stl() {
   }
 }
 
-module duct_assembly() {
-  explode([0, 0, -10], true) {
-    tyz(-(screw_clearance_d(car_screw)+th)/2,
-        -carriage_total_h(x_car)/2-th/4-e3d_height()) {
-      rz(90) rx(90) tz(-blower_depth(fan)/2) blower(fan);
-      duct_stl();
-    }
-    tz(-carriage_total_h(x_car)+0.5-screw_clearance_d(car_screw)-th)
+module duct_assembly()
+    pose([46.6, 0, 208.20], [-15.3, 32.9, -28.9])
+    assembly("duct") {
+  tyz(-(screw_clearance_d(car_screw)+th)/2,
+      -carriage_total_h(x_car)/2-th/4-e3d_height()) {
+    rz(90) rx(90) tz(-blower_depth(fan)/2) blower(fan);
+    duct_stl();
+  }
+  tz(-carriage_total_h(x_car)+0.5-screw_clearance_d(car_screw)-th)
+    duct_mount_stl();
+  n = screw_nut(car_screw);
+  w = screw_washer(car_screw);
+  mw = carriage_pitch_x(x_car)+screw_clearance_d(car_screw)+th;
+  dmw = blower_depth(fan)+th;
+  sl0 = mw + nut_h(n) + washer_h(w)*2;
+  sl1 = dmw + nut_h(n) + washer_h(w)*2;
 
-      duct_mount_stl();
-    n = screw_nut(car_screw);
-    w = screw_washer(car_screw);
-    mw = carriage_pitch_x(x_car)+screw_clearance_d(car_screw)+th;
-    sl = mw + nut_h(n) + washer_h(w)*2;
-    tz(-carriage_total_h(x_car)+0.5-screw_clearance_d(car_screw)*1.5-th*2) {
-      ry(90) tz(-mw/2) screw_washer_up(car_screw, sl);
-      explode([5, 0, 0], true) ry(90) tz(mw/2) washer(w) {
-        explode([0, 0, 5]) nut(n);
+  tyz(-(screw_clearance_d(car_screw)+th)/2,
+      -carriage_total_h(x_car)/2-th/4-e3d_height()) {
+    rz(90) rx(90) {
+      p = blower_screw_holes(fan);
+      txy(p[0][0], p[0][1]) {
+        tz(-mw/2) screw_washer_up(car_screw, sl0);
+        explode([0, 0, 5], true) tz(mw/2) washer(w) {
+          explode([0, 0, 5]) nut(n);
+        }
+      }
+      txy(p[1][0], p[1][1]) {
+        tz(-dmw/2) screw_washer_up(car_screw, sl1);
+        explode([0, 0, 5], true) tz(dmw/2) washer(w) {
+          explode([0, 0, 5]) nut(n);
+        }
       }
     }
-    mcw = screw_clearance_d(car_screw)+th*2;
   }
 }
 
 if ($preview) {
-  //$explode = 1;
+  $explode = 1;
   //x_carriage_assembly();
   //tz(ew/2) x_carriage_mount_subassembly();
   //hotend_subassembly();
-  //duct_assembly();
+  duct_assembly();
   //x_carriage_front_assembly();
-  x_carriage_rear_assembly();
+  //x_carriage_rear_assembly();
 }
 

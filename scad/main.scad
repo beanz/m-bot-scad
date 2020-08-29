@@ -102,7 +102,10 @@ module belts_assembly()
 module hotend_assembly()
   pose([68.3, 0, 317.8], [-5.49, -159.36, 344.71]) assembly("hotend") {
   frame_with_z_motor_assembly();
-  txyz(pos[0], pos[1]+y_rail_offset, x_bar_h) hotend_subassembly();
+  txyz(pos[0], pos[1]+y_rail_offset, x_bar_h) {
+    hotend_subassembly();
+    explode([0, 0, -30], offset = [0, 0, -25]) duct_assembly();
+  }
 }
 
 module frame_with_z_motor_assembly()
