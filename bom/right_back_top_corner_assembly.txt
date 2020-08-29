@@ -1,0 +1,7 @@
+right_back_top_corner_assembly:
+Vitamins:
+  3 Screw M4 flanged x 10mm
+  3 Nut M4 sliding T
+
+Printed:
+  1 back_top_corner.stl

@@ -1,14 +1,12 @@
 x_carriage_assembly:
 Vitamins:
-  1 Blower Runda RB5015
-  3 Nut M3 x 2.4mm 
-  2 Screw M3 cap x 20mm
-  1 Screw M3 cap x 35mm
-  6 Washer  M3 x 7mm x 0.5mm
+  2 Nut M3 x 2.4mm 
+  2 Screw M3 cap x 45mm
+  4 Washer  M3 x 7mm x 0.5mm
 
 Printed:
-  1 duct.stl
-  1 duct_mount.stl
+  1 x_carriage_mount.stl
 
 Assemblies:
-  1 x_carriage_no_blower_assembly
+  1 x_carriage_front_assembly
+  1 x_carriage_rear_assembly

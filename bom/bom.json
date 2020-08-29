@@ -1,5 +1,39 @@
 [
     {
+        "count": 1, 
+        "name": "duct_assembly", 
+        "big": null, 
+        "assemblies": {}, 
+        "routed": {}, 
+        "printed": {
+            "duct.stl": {
+                "count": 1, 
+                "colour": "[0, 0.572549, 0]"
+            }, 
+            "duct_mount.stl": {
+                "count": 1, 
+                "colour": "[0, 0.572549, 0]"
+            }
+        }, 
+        "vitamins": {
+            "nut(M3_nut): Nut M3 x 2.4mm ": {
+                "count": 2
+            }, 
+            "screw(M3_cap_screw, 35): Screw M3 cap x 35mm": {
+                "count": 1
+            }, 
+            "blower(RB5015): Blower Runda RB5015": {
+                "count": 1
+            }, 
+            "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
+                "count": 4
+            }, 
+            "screw(M3_cap_screw, 25): Screw M3 cap x 25mm": {
+                "count": 1
+            }
+        }
+    }, 
+    {
         "count": 2, 
         "name": "z_motor_assembly", 
         "big": null, 
@@ -254,7 +288,7 @@
     }, 
     {
         "count": 1, 
-        "name": "x_carriage_no_blower_assembly", 
+        "name": "x_carriage_assembly", 
         "big": null, 
         "assemblies": {
             "x_carriage_front_assembly": 1, 
@@ -276,42 +310,6 @@
             }, 
             "nut(M3_nut): Nut M3 x 2.4mm ": {
                 "count": 2
-            }
-        }
-    }, 
-    {
-        "count": 1, 
-        "name": "x_carriage_assembly", 
-        "big": null, 
-        "assemblies": {
-            "x_carriage_no_blower_assembly": 1
-        }, 
-        "routed": {}, 
-        "printed": {
-            "duct.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
-            }, 
-            "duct_mount.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
-            }
-        }, 
-        "vitamins": {
-            "screw(M3_cap_screw, 35): Screw M3 cap x 35mm": {
-                "count": 1
-            }, 
-            "screw(M3_cap_screw, 20): Screw M3 cap x 20mm": {
-                "count": 2
-            }, 
-            "blower(RB5015): Blower Runda RB5015": {
-                "count": 1
-            }, 
-            "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
-                "count": 6
-            }, 
-            "nut(M3_nut): Nut M3 x 2.4mm ": {
-                "count": 3
             }
         }
     }, 
@@ -367,7 +365,7 @@
             }
         }, 
         "vitamins": {
-            "screw(M3_cap_screw, 10): Screw M3 cap x 10mm": {
+            "screw(M3_cap_screw, 12): Screw M3 cap x 12mm": {
                 "count": 4
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
@@ -490,6 +488,69 @@
     }, 
     {
         "count": 1, 
+        "name": "left_front_top_corner_assembly", 
+        "big": null, 
+        "assemblies": {}, 
+        "routed": {}, 
+        "printed": {
+            "front_top_corner.stl": {
+                "count": 1, 
+                "colour": "[0, 0.572549, 0]"
+            }
+        }, 
+        "vitamins": {
+            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
+                "count": 2
+            }, 
+            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
+                "count": 2
+            }
+        }
+    }, 
+    {
+        "count": 1, 
+        "name": "left_back_top_corner_assembly", 
+        "big": null, 
+        "assemblies": {}, 
+        "routed": {}, 
+        "printed": {
+            "back_top_corner.stl": {
+                "count": 1, 
+                "colour": "[0, 0.572549, 0]"
+            }
+        }, 
+        "vitamins": {
+            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
+                "count": 3
+            }, 
+            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
+                "count": 3
+            }
+        }
+    }, 
+    {
+        "count": 4, 
+        "name": "side_top_corner_assembly", 
+        "big": null, 
+        "assemblies": {}, 
+        "routed": {}, 
+        "printed": {
+            "side_top_corner.stl": {
+                "count": 4, 
+                "colour": "[0, 0.572549, 0]"
+            }
+        }, 
+        "vitamins": {
+            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
+                "count": 28
+            }, 
+            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
+                "count": 28
+            }
+        }
+    }, 
+    {
+        "count": 1, 
         "name": "left_motor_assembly", 
         "big": null, 
         "assemblies": {}, 
@@ -605,33 +666,59 @@
         "name": "left_upper_end_assembly", 
         "big": null, 
         "assemblies": {
+            "cast_corner_bracket_assembly": 2, 
             "left_y_rail_assembly": 1, 
-            "cast_corner_bracket_assembly": 2
+            "side_top_corner_assembly": 2, 
+            "left_front_top_corner_assembly": 1, 
+            "left_back_top_corner_assembly": 1
         }, 
         "routed": {}, 
+        "printed": {}, 
+        "vitamins": {
+            "extrusion(E2020, 354): Extrusion E2020 x 354mm": {
+                "count": 1
+            }
+        }
+    }, 
+    {
+        "count": 6, 
+        "name": "bottom_corner_assembly", 
+        "big": null, 
+        "assemblies": {}, 
+        "routed": {}, 
         "printed": {
-            "side_top_corner.stl": {
-                "count": 2, 
-                "colour": "[0, 0.572549, 0]"
-            }, 
-            "front_top_corner.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
-            }, 
-            "back_top_corner.stl": {
-                "count": 1, 
+            "bottom_corner.stl": {
+                "count": 6, 
                 "colour": "[0, 0.572549, 0]"
             }
         }, 
         "vitamins": {
             "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
-                "count": 19
+                "count": 30
             }, 
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 19
+                "count": 30
+            }
+        }
+    }, 
+    {
+        "count": 2, 
+        "name": "reversed_bottom_corner_assembly", 
+        "big": null, 
+        "assemblies": {}, 
+        "routed": {}, 
+        "printed": {
+            "bottom_corner.stl": {
+                "count": 2, 
+                "colour": "[0, 0.572549, 0]"
+            }
+        }, 
+        "vitamins": {
+            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
+                "count": 10
             }, 
-            "extrusion(E2020, 354): Extrusion E2020 x 354mm": {
-                "count": 1
+            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
+                "count": 10
             }
         }
     }, 
@@ -816,25 +903,15 @@
         "name": "left_lower_end_with_z_assembly", 
         "big": null, 
         "assemblies": {
+            "bottom_corner_assembly": 1, 
             "cast_corner_bracket_assembly": 1, 
             "left_z_axis_rail_assembly": 1, 
+            "reversed_bottom_corner_assembly": 1, 
             "left_lower_end_assembly": 1
         }, 
         "routed": {}, 
-        "printed": {
-            "bottom_corner.stl": {
-                "count": 2, 
-                "colour": "[0, 0.572549, 0]"
-            }
-        }, 
-        "vitamins": {
-            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
-                "count": 10
-            }, 
-            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 10
-            }
-        }
+        "printed": {}, 
+        "vitamins": {}
     }, 
     {
         "count": 1, 
@@ -905,6 +982,7 @@
         "name": "left_rear_upright_assembly", 
         "big": null, 
         "assemblies": {
+            "bottom_corner_assembly": 1, 
             "cast_corner_bracket_assembly": 1, 
             "back_left_idler_assembly": 1
         }, 
@@ -913,18 +991,11 @@
             "foot.stl": {
                 "count": 1, 
                 "colour": "[0, 0.572549, 0]"
-            }, 
-            "bottom_corner.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
             }
         }, 
         "vitamins": {
-            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
-                "count": 5
-            }, 
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 9
+                "count": 4
             }, 
             "extrusion(E2040, 430): Extrusion E2040 x 430mm": {
                 "count": 1
@@ -969,6 +1040,7 @@
         "name": "left_front_upright_assembly", 
         "big": null, 
         "assemblies": {
+            "bottom_corner_assembly": 1, 
             "cast_corner_bracket_assembly": 1
         }, 
         "routed": {}, 
@@ -976,19 +1048,9 @@
             "foot.stl": {
                 "count": 1, 
                 "colour": "[0, 0.572549, 0]"
-            }, 
-            "bottom_corner.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
             }
         }, 
         "vitamins": {
-            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
-                "count": 5
-            }, 
-            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 5
-            }, 
             "extrusion(E2040, 430): Extrusion E2040 x 430mm": {
                 "count": 1
             }, 
@@ -1082,6 +1144,48 @@
     }, 
     {
         "count": 1, 
+        "name": "right_front_top_corner_assembly", 
+        "big": null, 
+        "assemblies": {}, 
+        "routed": {}, 
+        "printed": {
+            "front_top_corner.stl": {
+                "count": 1, 
+                "colour": "[0, 0.572549, 0]"
+            }
+        }, 
+        "vitamins": {
+            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
+                "count": 2
+            }, 
+            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
+                "count": 2
+            }
+        }
+    }, 
+    {
+        "count": 1, 
+        "name": "right_back_top_corner_assembly", 
+        "big": null, 
+        "assemblies": {}, 
+        "routed": {}, 
+        "printed": {
+            "back_top_corner.stl": {
+                "count": 1, 
+                "colour": "[0, 0.572549, 0]"
+            }
+        }, 
+        "vitamins": {
+            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
+                "count": 3
+            }, 
+            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
+                "count": 3
+            }
+        }
+    }, 
+    {
+        "count": 1, 
         "name": "right_motor_assembly", 
         "big": null, 
         "assemblies": {}, 
@@ -1142,31 +1246,15 @@
         "big": null, 
         "assemblies": {
             "right_y_rail_assembly": 1, 
+            "right_front_top_corner_assembly": 1, 
             "titan_mount_assembly": 2, 
-            "cast_corner_bracket_assembly": 2
+            "right_back_top_corner_assembly": 1, 
+            "cast_corner_bracket_assembly": 2, 
+            "side_top_corner_assembly": 2
         }, 
         "routed": {}, 
-        "printed": {
-            "side_top_corner.stl": {
-                "count": 2, 
-                "colour": "[0, 0.572549, 0]"
-            }, 
-            "front_top_corner.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
-            }, 
-            "back_top_corner.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
-            }
-        }, 
+        "printed": {}, 
         "vitamins": {
-            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
-                "count": 19
-            }, 
-            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 19
-            }, 
             "extrusion(E2020, 354): Extrusion E2020 x 354mm": {
                 "count": 1
             }
@@ -1212,25 +1300,15 @@
         "name": "right_lower_end_with_z_assembly", 
         "big": null, 
         "assemblies": {
+            "bottom_corner_assembly": 1, 
             "cast_corner_bracket_assembly": 1, 
+            "reversed_bottom_corner_assembly": 1, 
             "right_lower_end_assembly": 1, 
             "right_z_axis_rail_assembly": 1
         }, 
         "routed": {}, 
-        "printed": {
-            "bottom_corner.stl": {
-                "count": 2, 
-                "colour": "[0, 0.572549, 0]"
-            }
-        }, 
-        "vitamins": {
-            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
-                "count": 10
-            }, 
-            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 10
-            }
-        }
+        "printed": {}, 
+        "vitamins": {}
     }, 
     {
         "count": 1, 
@@ -1285,6 +1363,7 @@
         "name": "right_rear_upright_assembly", 
         "big": null, 
         "assemblies": {
+            "bottom_corner_assembly": 1, 
             "cast_corner_bracket_assembly": 1, 
             "back_right_idler_assembly": 1
         }, 
@@ -1297,18 +1376,14 @@
             "foot.stl": {
                 "count": 1, 
                 "colour": "[0, 0.572549, 0]"
-            }, 
-            "bottom_corner.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
             }
         }, 
         "vitamins": {
-            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
-                "count": 5
+            "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
+                "count": 4
             }, 
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 9
+                "count": 4
             }, 
             "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
                 "count": 4
@@ -1318,9 +1393,6 @@
             }, 
             "screw(M5_flanged_screw, 12): Screw M5 flanged x 12mm": {
                 "count": 2
-            }, 
-            "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
-                "count": 4
             }, 
             "extrusion(E2040, 430): Extrusion E2040 x 430mm": {
                 "count": 1
@@ -1348,6 +1420,7 @@
         "name": "right_front_upright_assembly", 
         "big": null, 
         "assemblies": {
+            "bottom_corner_assembly": 1, 
             "cast_corner_bracket_assembly": 1
         }, 
         "routed": {}, 
@@ -1359,27 +1432,20 @@
             "foot.stl": {
                 "count": 1, 
                 "colour": "[0, 0.572549, 0]"
-            }, 
-            "bottom_corner.stl": {
-                "count": 1, 
-                "colour": "[0, 0.572549, 0]"
             }
         }, 
         "vitamins": {
-            "screw(M4_flanged_screw, 10): Screw M4 flanged x 10mm": {
-                "count": 5
+            "screw(M5_flanged_screw, 12): Screw M5 flanged x 12mm": {
+                "count": 2
             }, 
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 9
+                "count": 4
             }, 
             "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
                 "count": 4
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 4
-            }, 
-            "screw(M5_flanged_screw, 12): Screw M5 flanged x 12mm": {
-                "count": 2
             }, 
             "extrusion(E2040, 430): Extrusion E2040 x 430mm": {
                 "count": 1
@@ -1533,7 +1599,8 @@
         "name": "hotend_assembly", 
         "big": null, 
         "assemblies": {
-            "frame_with_z_motor_assembly": 1
+            "frame_with_z_motor_assembly": 1, 
+            "duct_assembly": 1
         }, 
         "routed": {}, 
         "printed": {
@@ -1550,6 +1617,9 @@
             "nut(M12 Probe nut): Nut M12 x 4mm ": {
                 "count": 2
             }, 
+            "screw(M3_cap_screw, 40): Screw M3 cap x 40mm": {
+                "count": 2
+            }, 
             "fan(fan30x10): Fan 30mm x 10mm": {
                 "count": 1
             }, 
@@ -1561,9 +1631,6 @@
             }, 
             "LJ12a3: Inductive Probe": {
                 "count": 1
-            }, 
-            "screw(M3_cap_screw, 35): Screw M3 cap x 35mm": {
-                "count": 2
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
                 "count": 4
