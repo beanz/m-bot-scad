@@ -134,21 +134,7 @@ module right_upper_end_assembly()
   mxz(fd/2) {
     tyz(-ew*1.5, fh-ew*1.75) ry(90) {
       explode([0, 180, 0]) {
-        side_top_corner_stl();
-        tz(th) {
-          for (j = [-1, 0, 1]) {
-            ty(j*ew) {
-              for (i = [-1, 0, 1]) {
-                txz(i*ew*1.25, -eta/2) {
-                  if (i != 0 || j == 1) {
-                    screw(ex_print_screw, 10);
-                    rz(j == 1 ? 90 : 0) tz(-7) tnut(M4_tnut);
-                  }
-                }
-              }
-            }
-          }
-        }
+        side_top_corner_assembly();
       }
     }
   }
@@ -183,21 +169,7 @@ module left_upper_end_assembly()
     mxz(fd/2) {
       tyz(-ew*1.5, fh-ew*1.75) ry(90) {
         explode([0, 90, 0]) {
-          side_top_corner_stl();
-          tz(th) {
-            for (j = [-1, 0, 1]) {
-              ty(j*ew) {
-                for (i = [-1, 0, 1]) {
-                  txz(i*ew*1.25, -eta/2) {
-                    if (i != 0 || j == 1) {
-                      screw(ex_print_screw, 10);
-                      rz(j == 1 ? 90 : 0) tz(-7) tnut(M4_tnut);
-                    }
-                  }
-                }
-              }
-            }
-          }
+          side_top_corner_assembly();
         }
       }
     }

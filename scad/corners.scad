@@ -72,6 +72,26 @@ module front_top_corner_stl() {
   }
 }
 
+module side_top_corner_assembly()
+    pose([115.9, 0, 16.6], [45.62, -143.77, -62.26])
+    assembly("side_top_corner") {
+  side_top_corner_stl();
+  tz(th) {
+    for (j = [-1, 0, 1]) {
+      ty(j*ew) {
+        for (i = [-1, 0, 1]) {
+          txz(i*ew*1.25, -eta/2) {
+            if (i != 0 || j == 1) {
+              screw(ex_print_screw, 10);
+              rz(j == 1 ? 90 : 0) tz(-7) tnut(M4_tnut);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 module side_top_corner_stl() {
   stl("side_top_corner");
   color(print_color) render() {
@@ -144,5 +164,6 @@ if ($preview) {
   $explode = 1;
   //back_top_corner_assembly();
   //front_top_corner_assembly();
-  bottom_corner_assembly();
+  side_top_corner_assembly();
+  //bottom_corner_assembly();
 }
