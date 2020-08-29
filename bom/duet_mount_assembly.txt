@@ -1,6 +1,6 @@
 duet_mount_assembly:
 Vitamins:
-  6 Screw M4 cap x 16mm
+  6 Screw M4 cap x 10mm
   6 Nut M4 sliding T
   6 Washer  M4 x 9mm x 0.8mm
 

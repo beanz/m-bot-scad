@@ -122,10 +122,10 @@
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 4
             }, 
-            "screw(M4_cap_screw, 16): Screw M4 cap x 16mm": {
+            "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 4
             }, 
-            "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 4
             }
         }
@@ -170,13 +170,13 @@
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 2
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 2
-            }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
                 "count": 4
             }, 
             "screw(M3_cap_screw, 25): Screw M3 cap x 25mm": {
+                "count": 2
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 2
             }
         }
@@ -205,13 +205,13 @@
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 2
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 2
-            }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
                 "count": 4
             }, 
             "screw(M3_cap_screw, 25): Screw M3 cap x 25mm": {
+                "count": 2
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 2
             }
         }
@@ -428,7 +428,7 @@
             }
         }, 
         "vitamins": {
-            "screw(M4_cap_screw, 14): Screw M4 cap x 14mm": {
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 6
             }, 
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
@@ -574,13 +574,13 @@
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 3
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 3
-            }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 3
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
+                "count": 3
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 3
             }, 
             "screw(M3_cap_screw, 10): Screw M3 cap x 10mm": {
@@ -601,23 +601,23 @@
             }
         }, 
         "vitamins": {
-            "microswitch(medium_microswitch): Microswitch SS-01 or SS-5GL": {
-                "count": 1
+            "screw(M3_cap_screw, 12): Screw M3 cap x 12mm": {
+                "count": 2
             }, 
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
-                "count": 1
-            }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
                 "count": 1
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 1
             }, 
-            "screw(M3_cap_screw, 12): Screw M3 cap x 12mm": {
-                "count": 2
+            "microswitch(medium_microswitch): Microswitch SS-01 or SS-5GL": {
+                "count": 1
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
                 "count": 2
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
+                "count": 1
             }
         }
     }, 
@@ -735,10 +735,10 @@
             }
         }, 
         "vitamins": {
-            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 6
             }, 
-            "screw(M4_cap_screw, 16): Screw M4 cap x 16mm": {
+            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 6
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
@@ -842,10 +842,10 @@
             }
         }, 
         "vitamins": {
-            "screw(M4_cap_screw, 20): Screw M4 cap x 20mm": {
+            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 2
             }, 
-            "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
+            "screw(M4_cap_screw, 16): Screw M4 cap x 16mm": {
                 "count": 2
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
@@ -866,17 +866,14 @@
             }
         }, 
         "vitamins": {
-            "screw(M4_cap_screw, 14): Screw M4 cap x 14mm": {
-                "count": 4
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
+                "count": 12
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 12
             }, 
             "sliding_t_nut(M5_sliding_t_nut): Nut M5 sliding T": {
                 "count": 12
-            }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 8
             }
         }
     }, 
@@ -960,20 +957,20 @@
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 3
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 3
+            "nut(M3_nut): Nut M3 x 2.4mm ": {
+                "count": 1
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 3
-            }, 
-            "nut(M3_nut): Nut M3 x 2.4mm ": {
-                "count": 1
             }, 
             "screw(M3_cap_screw, 35): Screw M3 cap x 35mm": {
                 "count": 1
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
                 "count": 2
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
+                "count": 3
             }
         }
     }, 
@@ -1024,7 +1021,7 @@
             }
         }, 
         "vitamins": {
-            "screw(M4_cap_screw, 14): Screw M4 cap x 14mm": {
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 4
             }, 
             "screw(M5_flanged_screw, 12): Screw M5 flanged x 12mm": {
@@ -1095,14 +1092,14 @@
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 4
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 4
-            }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 4
             }, 
             "sliding_t_nut(M5_sliding_t_nut): Nut M5 sliding T": {
                 "count": 2
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
+                "count": 4
             }, 
             "extrusion(E2020, 220): Extrusion E2020 x 220mm": {
                 "count": 1
@@ -1137,7 +1134,7 @@
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 4
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 4
             }
         }
@@ -1209,13 +1206,13 @@
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 3
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 3
-            }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 3
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
+                "count": 3
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 3
             }, 
             "screw(M3_cap_screw, 10): Screw M3 cap x 10mm": {
@@ -1341,20 +1338,20 @@
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 3
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 3
+            "nut(M3_nut): Nut M3 x 2.4mm ": {
+                "count": 1
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 3
-            }, 
-            "nut(M3_nut): Nut M3 x 2.4mm ": {
-                "count": 1
             }, 
             "screw(M3_cap_screw, 35): Screw M3 cap x 35mm": {
                 "count": 1
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
                 "count": 2
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
+                "count": 3
             }
         }
     }, 
@@ -1385,14 +1382,14 @@
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 4
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 4
-            }, 
             "extrusion_inner_corner_bracket(E20_inner_corner_bracket, true): Extrusion inner corner bracket 4.5": {
                 "count": 1
             }, 
             "screw(M5_flanged_screw, 12): Screw M5 flanged x 12mm": {
                 "count": 2
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
+                "count": 4
             }, 
             "extrusion(E2040, 430): Extrusion E2040 x 430mm": {
                 "count": 1
@@ -1435,20 +1432,20 @@
             }
         }, 
         "vitamins": {
-            "screw(M5_flanged_screw, 12): Screw M5 flanged x 12mm": {
-                "count": 2
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
+                "count": 4
             }, 
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 4
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 4
+            "extrusion(E2040, 430): Extrusion E2040 x 430mm": {
+                "count": 1
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 4
             }, 
-            "extrusion(E2040, 430): Extrusion E2040 x 430mm": {
-                "count": 1
+            "screw(M5_flanged_screw, 12): Screw M5 flanged x 12mm": {
+                "count": 2
             }
         }
     }, 
@@ -1488,14 +1485,14 @@
             "sliding_t_nut(M4_sliding_t_nut): Nut M4 sliding T": {
                 "count": 4
             }, 
-            "screw(M4_cap_screw, 12): Screw M4 cap x 12mm": {
-                "count": 4
-            }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 4
             }, 
             "sliding_t_nut(M5_sliding_t_nut): Nut M5 sliding T": {
                 "count": 2
+            }, 
+            "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
+                "count": 4
             }, 
             "extrusion(E2020, 220): Extrusion E2020 x 220mm": {
                 "count": 1
