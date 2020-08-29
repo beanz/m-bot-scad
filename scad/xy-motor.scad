@@ -27,11 +27,11 @@ module motor_mount_stl() {
          }
         }
         tx(motor_hole_offset-(ew-th)/2) {
-          rz(-45) tx(ew) rrcf([ew, th, ew+th]);
+          rz(-45) tx(ew+th/4) rrcf([ew-th/2, th, ew+th]);
         }
       }
       NEMA_hole_positions(NEMA17, 4) {
-        cylinder(d = screw_clearance_d(motor_screw), h = th*3,
+        cylinder(d = screw_clearance_d(motor_screw)+1, h = th*3,
                  center = true);
       }
       cylinder(r = NEMA_big_hole(NEMA17)+1, h = th*3, center = true);
