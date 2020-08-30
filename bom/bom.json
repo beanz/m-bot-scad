@@ -1710,14 +1710,14 @@
         "routed": {}, 
         "printed": {}, 
         "vitamins": {
+            "screw(M4_cap_screw, 8): Screw M4 cap x  8mm": {
+                "count": 4
+            }, 
             "screw(M4_cap_screw, 10): Screw M4 cap x 10mm": {
                 "count": 4
             }, 
             "psu(S_300_12): PSU S-300-12": {
                 "count": 1
-            }, 
-            "screw(M4_flanged_screw, 8): Screw M4 flanged x  8mm": {
-                "count": 4
             }, 
             "washer(M4_washer): Washer  M4 x 9mm x 0.8mm": {
                 "count": 8
