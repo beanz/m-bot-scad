@@ -1,4 +1,4 @@
 {
-    "bed.dxf": 2.065, 
-    "aluminium_flat_bar.dxf": 2.049
+    "bed.dxf": 2.102, 
+    "aluminium_flat_bar.dxf": 2.107
 }

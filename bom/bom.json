@@ -138,7 +138,7 @@
         "routed": {}, 
         "printed": {}, 
         "vitamins": {
-            "ball_bearing(BB623): Ball bearing 623-2RS 3mm x 10mm x 4mm": {
+            "ball_bearing(BBF623ZZ): Ball bearing F623ZZ-2RS 3mm x 10mm x 4mm": {
                 "count": 8
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
@@ -931,7 +931,7 @@
         "routed": {}, 
         "printed": {}, 
         "vitamins": {
-            "ball_bearing(BB623): Ball bearing 623-2RS 3mm x 10mm x 4mm": {
+            "ball_bearing(BBF623ZZ): Ball bearing F623ZZ-2RS 3mm x 10mm x 4mm": {
                 "count": 8
             }, 
             "washer(M3_washer): Washer  M3 x 7mm x 0.5mm": {
