@@ -208,8 +208,6 @@ pulley_d = pulley_od(opulley);
 belt_width = 1.38;
 belt_h = 6;
 cl = 0.2;
-BB623 = ["623", 3, 10, 4, "red", 1.0, 1.0];
-BBF623 = BB623; // TOFIX: flange
 idler_h = ball_bearing_h(BBF623)*2+washer_h(M3_washer)*3;
 acme_nut_w = 12;
 
