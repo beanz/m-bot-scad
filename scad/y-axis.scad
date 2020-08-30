@@ -27,9 +27,6 @@ module left_y_rail_assembly()
   tz(-ew/2) rx(90) {
     rz(90) extrusion(e2040, fd-ew*2);
   }
-  if ($label) {
-    txz(40, 20) rz(90) label(str(fd-ew*2, "mm"));
-  }
   ty(fd/2-ew) {
     txz(-ew/2, -ew) explode([0, 40, 0], offset = [0, -30, -5]) {
       rz(180) ry(90) cast_corner_bracket_assembly();
@@ -48,9 +45,6 @@ module right_y_rail_assembly()
   }
   tz(-ew/2) rx(90) {
     rz(90) extrusion(e2040, fd-ew*2);
-  }
-  if ($label) {
-    txz(40, 20) rz(90) label(str(fd-ew*2, "mm"));
   }
   ty(fd/2-ew) {
     txz(-ew/2, -ew) explode([0, 40, 0], offset = [0, -30, -5]) {

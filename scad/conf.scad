@@ -14,7 +14,6 @@ use <NopSCADlib/vitamins/rod.scad>
 printed_z_motor_mount = true;
 
 $fn = 24;
-$label = 0;
 eta = 0.01;
 th = 5;
 pw = 300;
@@ -39,10 +38,6 @@ function microswitch_l(t) = microswitch_length(t);
 function microswitch_d(t) = microswitch_thickness(t);
 function microswitch_h(t) = microswitch_width(t);
 car_screw = M3_cap_screw;
-
-module label(l) {
-  color("black") text(text = l, size = 20, halign = "center");
-}
 
 function screw_clearance_d(t) = 2 * screw_clearance_radius(t);
 function screw_d(t) = 2 * screw_radius(t);

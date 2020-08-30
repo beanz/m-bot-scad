@@ -12,7 +12,6 @@ module left_front_upright_assembly()
   pose([71.8, 0, 131.10], [128.04, -53.03, 201.78])
   assembly("left_front_upright") {
   ty(-fd/2) rz(180) {
-    // corner upright
     txy(-ew2/2, -ew/2) {
       rz(90) {
         extrusion(e2040, fh, center = false);
@@ -21,12 +20,9 @@ module left_front_upright_assembly()
         rz(180) rx(90) cast_corner_bracket_assembly();
       }
       tz(-th*2) explode([0, 0, -120]) foot_assembly();
-      if ($label) {
-        txz(20, fh/2) ry(90) label(str(fh, "mm"));
-      }
     }
-    txz(-ew2, ew) mirror([1,0,0]) explode([0, 0, -110]) {
-      rz(90) ry(90) bottom_corner_assembly();
+    txz(-ew2, ew) explode([0, 0, -110]) {
+      rz(90) ry(90) reversed_bottom_corner_assembly();
     }
   }
 }
@@ -39,22 +35,18 @@ module left_front_upright_assembly()
 module left_rear_upright_assembly()
     pose([44.5, 0, 14.2], [40.56, 242.73, 179.62])
     assembly("left_rear_upright") {
-  mirror([1, 0, 0]) ty(fd/2) {
-    // corner upright
-    txy(-ew2/2, -ew/2) {
+  ty(fd/2) {
+    txy(ew2/2, -ew/2) {
       rz(90) {
         extrusion(e2040, fh, center = false);
       }
-      txz(-ew2/2, ew2) explode([0, 0, -80]) {
-        rz(180) rx(90) cast_corner_bracket_assembly();
+      txz(ew2/2, ew2) explode([0, 0, -80]) {
+        rx(90) cast_corner_bracket_assembly();
       }
       tz(-th*2) explode([0, 0, -120], true) foot_assembly();
-      if ($label) {
-        txz(20, fh/2) ry(90) label(str(fh, "mm"));
-      }
     }
-    txz(-ew2, ew) explode([0, 0, -110]) {
-      mirror([1,0,0]) rz(90) ry(90) bottom_corner_assembly();
+    txz(ew2, ew) explode([0, 0, -110]) {
+      rz(90) ry(90) bottom_corner_assembly();
     }
   }
   txyz(ew2, fd/2-ew/2, fh-ew2/2-ew) {
@@ -70,4 +62,10 @@ module left_rear_upright_assembly()
       ry(-90) socket_mount_preassembly();
     }
   }
+}
+
+if ($preview) {
+  $explode = 0;
+  //left_front_upright_assembly();
+  left_rear_upright_assembly();
 }
