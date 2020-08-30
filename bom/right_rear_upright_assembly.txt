@@ -13,5 +13,5 @@ Printed:
 
 Assemblies:
   1 back_right_idler_assembly
-  1 bottom_corner_assembly
   1 cast_corner_bracket_assembly
+  1 reversed_bottom_corner_assembly

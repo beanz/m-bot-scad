@@ -1,7 +1,7 @@
 reversed_bottom_corner_assemblies:
 Vitamins:
- 10 Screw M4 flanged x 10mm
- 10 Nut M4 sliding T
+ 20 Screw M4 flanged x 10mm
+ 20 Nut M4 sliding T
 
 Printed:
-  2 bottom_corner.stl
+  4 bottom_corner.stl

@@ -7,5 +7,5 @@ Printed:
   1 foot.stl
 
 Assemblies:
-  1 bottom_corner_assembly
   1 cast_corner_bracket_assembly
+  1 reversed_bottom_corner_assembly
