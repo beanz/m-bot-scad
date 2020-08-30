@@ -315,7 +315,6 @@ module right_y_carriage_stl() {
 
 module y_endstop_mount_stl() {
   stl("y_endstop_mount");
-  // TOFIX: reprint!
   color(print_color) {
     render() {
       // narrower to avoid motor mount
