@@ -5,7 +5,7 @@ include <shapes.scad>
 module psu_subassembly() {
   txyz(-fw/2+psu_l/2+ew2+80, fd/2-th, ew2+psu_w/2+th) {
     explode([100, 0, 0], offset = [-psu_l/2, 0, 0]) {
-      ty(-psu_h-th) rx(-90) psu(PSU_S_350);
+      ty(-psu_h) rx(-90) psu(PSU_S_350);
     }
     psu_mount_screws();
   }
@@ -16,23 +16,19 @@ module psu_mount_stl() {
   color(print_color) {
     difference() {
       union() {
-        tyz(-psu_h/2-th, -psu_w/2-th) rcc([ew, psu_h+th*2, th]);
+        tyz(-psu_h/2-th/2, -psu_w/2-th) rcc([ew, psu_h+th-0.5, th]);
         tyz(-ew/2-th*1.5, -psu_w/2-th-ew2) rcc([ew, th, th+ew2]);
-        tyz(-psu_h-th*1.5, -psu_w/2-th) {
+        tyz(-psu_h-th/2, -psu_w/2-th) {
           rcc([ew, th, psu_w/2+50/2+th+th+screw_d(psu_screw)/2]);
-        }
-        tyz(-th/2, -psu_w/2-th) {
-          rcc([ew, th, th*2]);
         }
       }
       mxy(50/2) {
-        ty(-psu_h-th*1.5) rx(90) {
+        ty(-psu_h-th/2) rx(90) {
           cylinder(d = screw_clearance_d(psu_low_screw)*1.1,
                    h = th*2, center = true);
-          cylinder(d = screw_head_d(psu_low_screw)*1.1, h = th);
         }
       }
-      tyz(-psu_h/2-25/2-th*1.5, -psu_w/2) {
+      tyz(-psu_h/2-25/2-th/2, -psu_w/2) {
         cylinder(d = screw_clearance_d(psu_screw)*1.1,
                  h = 100, center = true);
       }
@@ -127,20 +123,20 @@ module psu_cover_stl() {
   color(print_color) render() {
     difference() {
       union() {
-        txy(-l/2+ol/2+th/2, -(psu_h+th)/2-th/2)
+        txy(-l/2+ol/2+th/2, -(psu_h+th)/2+th/2)
           cc([l+ol+th, psu_h+th*2, psu_w+th*2]);
         txyz(-l+ew*1.5, th/2-ew, -psu_w/2-ew-th)
           rcc([ew*3, th, ew+th]);
       }
-      txy(psu_l/2, -psu_h/2-th) {
+      txy(psu_l/2, -psu_h/2) {
         cc([psu_l, psu_h+clearance/2, psu_w+clearance]);
       }
-      txy(-l/2+th, -psu_h/2-th/2-th) cc([l, psu_h-th, psu_w+clearance]);
+      txy(-l/2+th, -psu_h/2) cc([l, psu_h, psu_w+clearance]);
       txyz(ol-clearance, -psu_h, -th-clearance) {
         cc([ew+clearance, psu_h*2, psu_w+clearance]);
       }
       tx(ol) {
-        ty(-psu_h/2-th*1.5) {
+        ty(-psu_h/2-th/2) {
           mxz(25/2) {
             cylinder(d = screw_clearance_d(psu_screw)*1.1,
                      h = 1000, center = true);
@@ -168,15 +164,15 @@ module psu_cover_stl() {
 
 module psu_mount_screws() {
   myz(150/2) {
-    ty(-psu_h-th*1.5) mxy(50/2) {
-      rx(-90) screw_washer_up(psu_low_screw, 6);
+    ty(-psu_h-th) mxy(50/2) {
+      rx(-90) screw_washer_up(psu_screw, 6);
     }
-    tyz(-psu_h/2-25/2-th*1.5, -psu_w/2-th) {
+    tyz(-psu_h/2-25/2-th/2, -psu_w/2-th) {
       screw_washer_up(psu_screw, 8);
     }
   }
   tx(-150/2) {
-    tyz(-psu_h/2-th*1.5, psu_w/2+th) {
+    tyz(-psu_h/2-th/2, psu_w/2+th) {
       mxz(25/2) {
         screw_washer(psu_screw, 8);
       }
