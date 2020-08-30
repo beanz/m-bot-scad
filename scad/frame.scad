@@ -122,9 +122,6 @@ module right_upper_end_assembly()
     rx(90) {
       extrusion(e2020, fd-ew*2);
     }
-    if ($label) {
-      tz(20) rz(90) label(str(fd-ew*2, "mm"));
-    }
     mxz(fd/2-ew) {
       tz(-ew/2) {
         explode([0, 140, 0]) rz(180) ry(90) cast_corner_bracket_assembly();
@@ -158,20 +155,16 @@ module left_upper_end_assembly()
     rx(90) {
       extrusion(e2020, fd-ew*2);
     }
-    if ($label) {
-      tz(20) rz(90) label(str(fd-ew*2, "mm"));
-    }
     mxz(fd/2-ew) {
       tz(-ew/2) {
         explode([0, 50, 0]) rz(180) ry(90) cast_corner_bracket_assembly();
       }
     }
   }
-  // this assembly has 180 degree rotational symmetry so mirror is safe
-  mirror([1,0,0]) {
-    mxz(fd/2) {
-      tyz(-ew*1.5, fh-ew*1.75) ry(90) {
-        explode([0, 90, 0]) {
+  mxz(fd/2) {
+    tyz(ew*1.5, fh-ew*1.75) ry(90) {
+      explode([0, 90, 0]) {
+        ty(-ew*3) ry(180) {
           side_top_corner_assembly();
         }
       }
@@ -257,9 +250,6 @@ module lower_end_assembly() {
       rx(90) {
         extrusion(e2040, fd-ew*2);
       }
-      if ($label) {
-        txz(40, 20) rz(90) label(str(fd-ew*2, "mm"));
-      }
       tz(ew) {
         ty(fd/2-ew) {
           explode([0, 140, 0], offset = [0, -10, 10]) {
@@ -297,9 +287,6 @@ module lower_back_frame_assembly()
 module lower_back_frame_unit() {
   tyz(-ew/2, ew2/2) {
     ry(90) rz(90) extrusion(e2040, fw-ew*4);
-    if ($label) {
-      tz(40) label(str(fw-ew*4, "mm"));
-    }
   }
 }
 
@@ -355,9 +342,6 @@ module frame_assembly()
     // upper back
     tyz(-ew/2, fh-ew2/2) {
       ry(90) rz(90) extrusion(e2040, fw-ew*4);
-      if ($label) {
-        tz(40) label(str(fw-ew*4, "mm"));
-      }
     }
   }
 
@@ -389,8 +373,8 @@ if ($preview) {
   //left_end_frame_assembly();
   //left_end_with_z_carriage_rail_assembly();
   //left_lower_end_assembly();
-  left_lower_end_with_z_assembly();
-  //left_upper_end_assembly();
+  //left_lower_end_with_z_assembly();
+  left_upper_end_assembly();
   //lower_back_frame_assembly();
   //right_central_and_rear_assembly();
   //right_central_end_assembly();

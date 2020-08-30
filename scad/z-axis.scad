@@ -49,9 +49,6 @@ module z_axis_rail_assembly() {
   txz(-ew/2, ew2) {
 
     extrusion(e2020, z_bar_l, center = false);
-    if ($label) {
-      txz(10, z_bar_l/2) ry(90) label(str(z_bar_l, "mm"));
-    }
 
     explode([0, 0, 1.2 * z_rail_l]) {
       tx(ew/2) ry(90) tx(-z_rail_l/2) z_rail_assembly();

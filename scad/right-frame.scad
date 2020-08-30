@@ -21,12 +21,9 @@ module right_front_upright_assembly()
         rz(180) rx(90) cast_corner_bracket_assembly();
       }
       tz(-th*2) explode([0, 0, -120], true) foot_assembly();
-      if ($label) {
-        txz(20, fh/2) ry(90) label(str(fh, "mm"));
-      }
     }
     txz(-ew2, ew) explode([0,0,-110]) rz(-90) ry(90) bottom_corner_assembly();
-    mirror([0, 1, 0]) spool_holder_assembly();
+    tx(-ew2) rz(180) spool_holder_assembly();
   }
 }
 
@@ -47,12 +44,9 @@ module right_rear_upright_assembly()
         rz(180) rx(90) cast_corner_bracket_assembly();
       }
       tz(-th*2) explode([0, 0, -120], true) foot_assembly();
-      if ($label) {
-        txz(20, fh/2) ry(90) label(str(fh, "mm"));
-      }
     }
     txz(-ew2, ew) explode([0, 0, -110]) {
-      mirror([1, 0, 0]) rz(90) ry(90) bottom_corner_assembly();
+      rz(90) ry(90) reversed_bottom_corner_assembly();
     }
     spool_holder_assembly();
   }
