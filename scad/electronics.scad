@@ -28,9 +28,13 @@ module psu_mount_stl() {
                    h = th*2, center = true);
         }
       }
-      tyz(-psu_h/2-25/2-th/2, -psu_w/2) {
-        cylinder(d = screw_clearance_d(psu_screw)*1.1,
-                 h = 100, center = true);
+      hull() {
+        for (y = [0, 2.5]) ty(y) {
+          tyz(-psu_h/2-25/2-th/2, -psu_w/2) {
+            cylinder(d = screw_clearance_d(psu_screw)*1.1,
+                     h = 100, center = true);
+          }
+        }
       }
       tz(-psu_w/2-th-ew2/2) mxy(20/2) {
         rx(90) cylinder(d = screw_clearance_d(ex_screw)*1.1,
