@@ -190,12 +190,12 @@ psu_screw = M4_cap_screw;
 psu_low_screw = M4_flanged_screw;
 opulley = GT2x20ob_pulley; // TOFIX: GT2x20_ooznest_pulley;
 
-z_rail = MGN15;
+z_rail = MGN15H;
 z_car = rail_carriage(z_rail);
 z_car_l = carriage_l(z_car);
 z_car_w = carriage_w(z_car);
 z_car_h = carriage_total_h(z_car);
-y_rail = MGN15;
+y_rail = MGN15H;
 y_car = rail_carriage(y_rail);
 y_car_l = carriage_l(y_car);
 y_car_w = carriage_w(y_car);
