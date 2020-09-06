@@ -147,7 +147,7 @@ module psu_cover_stl() {
           }
         }
       }
-      txz(-l+ew*1.5, -(psu_w+th*1.5+ew)/2) myz(ew) {
+      txz(-l+ew*1.5, -(psu_w+th*2+ew)/2) myz(ew) {
         rx(90) {
           cylinder(d = screw_clearance_d(ex_screw)*1.1,
                    h = 1000, center = true);
@@ -189,7 +189,7 @@ module psu_mount_assembly() {
   tx(-psu_l/2) {
     explode([0, -20, 0], true) {
       psu_cover_stl();
-      txyz(-psu_cover_l+ew*1.5, -ew, -(psu_w+th*1.5+ew)/2) myz(ew) {
+      txyz(-psu_cover_l+ew*1.5, -ew, -(psu_w+th*2+ew)/2) myz(ew) {
         rx(90) {
           screw_and_washer(ex_screw, ex_screw_l);
           if (exploded() == 0) {
@@ -200,7 +200,7 @@ module psu_mount_assembly() {
     }
   }
   if (exploded()) {
-    txyz(-(psu_l/2+ew2+80)+25, -ew, -(psu_w+th*1.5+ew)/2) {
+    txyz(-(psu_l/2+ew2+80)+25, -ew, -(psu_w+th*2+ew)/2) {
       explode([-10, 0, 0], offset = [10, 0, 0]) {
         for (i = [0:3]) {
           tx(-ew*i) rx(90) tz(-7) rz(90) tnut(M4_tnut);
