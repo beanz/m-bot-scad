@@ -1,4 +1,4 @@
-./tmp.png: \
+stls/y_endstop_mount.stl: \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/sector.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/printed/fan_guard.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/ring_terminals.scad \
@@ -25,16 +25,15 @@
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/microswitch.scad \
 	/home/beanz/things/m-bot/scad/common.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/fans.scad \
-	png.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/vitamins/extrusions.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/utils/core/rounded_rectangle.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/vitamins/swiss_clip.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/core.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/leds.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/screws.scad \
 	/home/beanz/things/m-bot/scad/conf.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/dip.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/extrusion_brackets.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/vitamins/extrusions.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/core/rounded_rectangle.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/vitamins/swiss_clip.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/nut.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/washers.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/global_defs.scad \
@@ -78,6 +77,7 @@
 	/home/beanz/things/m-bot/scad/xy-motor.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/sweep.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/tube.scad \
+	stl.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/core/sphere.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/core/polyholes.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/quadrant.scad \
