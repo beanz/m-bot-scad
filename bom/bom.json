@@ -19,7 +19,7 @@
             "nut(M3_nut): Nut M3 x 2.4mm ": {
                 "count": 2
             }, 
-            "screw(M3_cap_screw, 35): Screw M3 cap x 35mm": {
+            "screw(M3_cap_screw, 30): Screw M3 cap x 30mm": {
                 "count": 1
             }, 
             "blower(RB5015): Blower Runda RB5015": {
@@ -44,7 +44,7 @@
             "NEMA(NEMA17): Stepper motor NEMA17 x 47mm": {
                 "count": 2
             }, 
-            "leadscrew(8, 290, 8, 4): Leadscrew 8 x 290mm, 8mm lead, 4 starts": {
+            "leadscrew(8, 250, 8, 4): Leadscrew 8 x 250mm, 8mm lead, 4 starts": {
                 "count": 2
             }
         }
