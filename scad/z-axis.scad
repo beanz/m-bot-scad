@@ -69,7 +69,7 @@ module z_axis_rail_assembly() {
 module z_motor_assembly()
   assembly("z_motor") {
   NEMA(NEMA17);
-  tz(290/2+25) leadscrew(8, 290, 8, 4);
+  tz(290/2+25) leadscrew(8, 250, 8, 4);
   tz(23) coupler();
 }
 
