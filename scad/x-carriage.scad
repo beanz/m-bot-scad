@@ -712,7 +712,7 @@ module duct_assembly()
     duct_mount_stl();
   n = screw_nut(car_screw);
   w = screw_washer(car_screw);
-  mw = carriage_pitch_x(x_car)+screw_clearance_d(car_screw)+th;
+  mw = carriage_pitch_x(x_car)+screw_clearance_d(car_screw);
   dmw = blower_depth(fan)+th;
   sl0 = mw + nut_h(n) + washer_h(w)*2;
   sl1 = dmw + nut_h(n) + washer_h(w)*2;
