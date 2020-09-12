@@ -474,13 +474,13 @@ module probe_mount_stl() {
           }
         }
         l = e3d_height()-probe_offset[2]-15;
-        txy(probe_offset[0], -l/2) {
-          rrcf([probe_washer_d(probe), l, th],
+        txy(probe_offset[0]+1/2, -l/2) {
+          rrcf([probe_washer_d(probe)-1, l, th],
                r = (screw_clearance_d(hotend_mount_screw)+th/2)/2);
         }
         h = probe_washer_d(probe)/2+e3d_clamp_d()/2+th*2;
-        txyz(probe_offset[0], -(l-th), -h+th) {
-          rrcf([probe_washer_d(probe), th*2, h],
+        txyz(probe_offset[0]+1/2, -(l-th), -h+th) {
+          rrcf([probe_washer_d(probe)-1, th*2, h],
                r = (screw_clearance_d(hotend_mount_screw)+th/2)/2);
         }
       }
@@ -746,11 +746,11 @@ module duct_assembly()
 }
 
 if ($preview) {
-  $explode = 1;
+  $explode = 0;
   //x_carriage_assembly();
   //tz(ew/2) x_carriage_mount_subassembly();
-  //hotend_subassembly();
-  duct_assembly();
+  hotend_subassembly();
+  //duct_assembly();
   //x_carriage_front_assembly();
   //x_carriage_rear_assembly();
 }
