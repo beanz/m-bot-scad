@@ -402,9 +402,11 @@ module hotend_mount_stl() {
         ty(x_car_h/2+hotend_offset+clamp_h/2) {
           hull() {
             mxz(clamp_h/2-(screw_clearance_d(hotend_mount_screw)+th/2)/2) {
-              tz(-clamp_d/2) {
-                cylinder(d = screw_clearance_d(hotend_mount_screw)+th/2,
-                         h = th+clamp_d/2);
+              myz(10) {
+                tz(-clamp_d/2) {
+                  cylinder(d = screw_clearance_d(hotend_mount_screw)+th/2,
+                           h = th+clamp_d/2);
+                }
               }
             }
           }
@@ -747,9 +749,9 @@ module duct_assembly()
 
 if ($preview) {
   $explode = 0;
-  //x_carriage_assembly();
+  x_carriage_assembly();
   //tz(ew/2) x_carriage_mount_subassembly();
-  hotend_subassembly();
+  //hotend_subassembly();
   //duct_assembly();
   //x_carriage_front_assembly();
   //x_carriage_rear_assembly();
