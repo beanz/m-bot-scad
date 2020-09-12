@@ -402,11 +402,9 @@ module hotend_mount_stl() {
         ty(x_car_h/2+hotend_offset+clamp_h/2) {
           hull() {
             mxz(clamp_h/2-(screw_clearance_d(hotend_mount_screw)+th/2)/2) {
-              myz(10) {
-                tz(-clamp_d/2) {
-                  cylinder(d = screw_clearance_d(hotend_mount_screw)+th/2,
-                           h = th+clamp_d/2);
-                }
+              tz(-clamp_d/2) {
+                cylinder(d = screw_clearance_d(hotend_mount_screw)+th/2,
+                         h = th+clamp_d/2);
               }
             }
           }
@@ -419,8 +417,10 @@ module hotend_mount_stl() {
       ty(x_car_h/2+hotend_offset+clamp_h/2) {
         ty(-clamp_h/2+(clamp_top_h+clamp_mid_h/2)) {
           myz(10) {
-            cylinder(d = screw_clearance_d(hotend_mount_screw),
-                     h = 100, center = true);
+            mxz(clearance) {
+              cylinder(d = screw_clearance_d(hotend_mount_screw),
+                       h = 100, center = true);
+            }
           }
         }
         tyz(-clamp_h/2, -clamp_d/2) rx(90) e3d_clamp_cut(0.5);
@@ -446,9 +446,11 @@ module hotend_clamp_stl() {
       }
       tz(-(clamp_top_h+clamp_mid_h/2)) {
         myz(10) {
-          rx(90) {
-            cylinder(d = screw_clearance_d(hotend_mount_screw),
-                     h = 100, center = true);
+          mxy(clearance) {
+            rx(90) {
+              cylinder(d = screw_clearance_d(hotend_mount_screw),
+                       h = 100, center = true);
+            }
           }
         }
       }
@@ -487,8 +489,10 @@ module probe_mount_stl() {
       }
       ty(-(clamp_top_h+clamp_mid_h/2)) {
         myz(10) {
-          cylinder(d = screw_clearance_d(hotend_mount_screw),
-                   h = th*3, center = true);
+          mxz(clearance) {
+            cylinder(d = screw_clearance_d(hotend_mount_screw),
+                     h = th*3, center = true);
+          }
         }
       }
     }
@@ -674,12 +678,16 @@ module duct_mount_stl() {
           }
         }
       }
+      // allow clearance below carriage
+      tz(-clearance) rcc([100,100,100]);
       ty(-carriage_w(x_car)/2) {
         tz(-(clamp_top_h+clamp_mid_h/2)+2) {
           myz(10) {
-            rx(90) {
-              cylinder(d = screw_clearance_d(hotend_mount_screw),
-                       h = th*3, center = true);
+            mxy(clearance) {
+              rx(90) {
+                cylinder(d = screw_clearance_d(hotend_mount_screw),
+                         h = th*3, center = true);
+              }
             }
             rx(-90) {
               cylinder(d = washer_od(screw_washer(hotend_mount_screw))+0.5,
