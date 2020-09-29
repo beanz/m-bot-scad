@@ -3,7 +3,7 @@ include <lazy.scad>
 include <shapes.scad>
 
 ml = 28;
-l = 85;
+l = 92;
 nw = NEMA_width(NEMA17);
 
 module titan_mount_stl() {
@@ -19,10 +19,10 @@ module titan_mount_stl() {
 
     ty(nw/2+th) rx(90) linear_extrude(th) difference() {
       union() {
-        square([ew, l], center = true);
+        ty(-7) square([ew, l], center = true);
         ty(-ml/2+1) square([nw+4, ml], center = true);
       }
-      mxz((l-screw_clearance_d(ex_screw)-th)/2) {
+      ty(-7) mxz((l-screw_clearance_d(ex_screw)-th)/2) {
         circle(d = screw_clearance_d(ex_screw));
       }
     }
@@ -38,10 +38,10 @@ module titan_mount_assembly()
   assembly("titan_mount") {
   ty(-nw/2-th) {
     titan_mount_stl();
-    tz(-1) rz(90) NEMA(NEMA17VS);
+    tz(-1) rz(90) NEMA(NEMA17M);
     vitamin("E3DTitan: E3D Titan Extruder");
     translate([0, 0, 14.5]) %cube([40, 40, 26], center = true);
-    mxy((l-screw_clearance_d(ex_screw)-th)/2) {
+    tz(-7) mxy((l-screw_clearance_d(ex_screw)-th)/2) {
       ty(nw/2) rx(90) {
         screw_and_washer(ex_screw, ex_screw_l);
         tz(-7) tnut(M4_tnut);
