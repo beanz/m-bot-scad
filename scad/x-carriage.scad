@@ -5,6 +5,7 @@ include <shapes.scad>
 use <vitamins/e3d-v6.scad>
 include <vitamins/probe.scad>
 include <NopSCADlib/vitamins/blowers.scad>
+include <NopSCADlib/vitamins/inserts.scad>
 
 clamp_h = e3d_clamp_h();
 clamp_d = e3d_clamp_d();
@@ -80,7 +81,11 @@ module x_carriage_front_assembly()
     }
     mxz(belt_clamp_offset) {
       explode([0, 0, 10], true) {
-        tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+        if (carriage_inserts) {
+          tz(th) rx(180) insert(o_insert);
+        } else {
+          tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+        }
       }
     }
   }
@@ -95,7 +100,11 @@ module x_carriage_front_assembly()
     }
     mxz(belt_clamp_offset) {
       explode([0, 0, 10], true) {
-        tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+        if (carriage_inserts) {
+          tz(th) rx(180) insert(o_insert);
+        } else {
+          tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+        }
       }
     }
   }
@@ -110,14 +119,19 @@ module x_carriage_front_assembly()
     }
     explode([0, 0, 10], true) {
       hotend_mount_positions() {
-        tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+        if (carriage_inserts) {
+          tz(th) rx(180) insert(o_insert);
+        } else {
+          tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+        }
       }
     }
   }
 }
 
 module x_carriage_rear_assembly()
-  pose([66.2, 0, 301.0], [-177.92, -110.93, 91.54]) assembly("x_carriage_rear") {
+    pose([66.2, 0, 301.0], [-177.92, -110.93, 91.54])
+    assembly("x_carriage_rear") {
   x_carriage_rear_stl();
   n = screw_nut(car_screw);
   txz(-carriage_l(x_car)/2, carriage_total_h(x_car)/2+microswitch_l(ms)/2) {
@@ -139,9 +153,12 @@ module x_carriage_rear_assembly()
         rx(-90) rz(30) screw_washer(car_screw, th*1.3+nut_h(n));
       }
     }
-    ty(-th*0.3) {
-      explode([0, -5, 0], true) {
-        rx(-90) rz(30) nut(screw_nut(car_screw));
+
+    explode([0, -10, 0], false) {
+      if (carriage_inserts) {
+        ty(th/2) rx(-90) insert(o_insert);
+      } else {
+        ty(-th*0.3) rx(-90) rz(30) nut(screw_nut(car_screw));
       }
     }
   }
@@ -157,8 +174,12 @@ module x_carriage_rear_assembly()
       }
     }
     mxz(belt_clamp_offset) {
-      explode([0, 0, 10], true) {
-        tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+      explode([0, 0, 10], false) {
+        if (carriage_inserts) {
+          tz(th) rx(180) insert(o_insert);
+        } else {
+          tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+        }
       }
     }
   }
@@ -174,8 +195,12 @@ module x_carriage_rear_assembly()
       }
     }
     mxz(belt_clamp_offset) {
-      explode([0, 0, 10], true) {
-        tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+      explode([0, 0, 10], false) {
+        if (carriage_inserts) {
+          tz(th) rx(180) insert(o_insert);
+        } else {
+          tz(th*1.3) rz(30) nut(screw_nut(car_screw));
+        }
       }
     }
   }
@@ -184,14 +209,22 @@ module x_carriage_rear_assembly()
 module belt_clamp_holes(offset = th) {
   tx(-th*2) square([2, belt_h+2], center = true);
   tx(-th*2+offset) mxz(belt_clamp_offset) {
-    circle(d = screw_clearance_d(car_screw));
+    if (carriage_inserts) {
+      circle(d = insert_d);
+    } else {
+      circle(d = screw_clearance_d(car_screw));
+    }
   }
 }
 
 module belt_clamp_half_holes(offset = th) {
   tx(-th) square([th*2+eta, belt_h+2], center = true);
   tx(-th*2+offset) mxz(belt_clamp_offset) {
-    rz(30) circle(d = nut_trap_d, $fn=6);
+    if (carriage_inserts) {
+      circle(d = insert_d);
+    } else {
+      rz(30) circle(d = nut_trap_d, $fn=6);
+    }
   }
 }
 
@@ -213,11 +246,17 @@ module x_carriage_front_stl() {
         txy(-x_car_l/2, -top_belt_h-ew/4) mirror([1, 0, 0])
           belt_clamp_half_holes();
 
-        // hotend mounting
-        hotend_mount_positions() rz(30) circle(d = nut_trap_d, $fn=6);
+        hotend_mount_positions() {
+          if (carriage_inserts) {
+            circle(d = insert_d);
+          } else {
+            // hotend mounting
+            hotend_mount_positions() rz(30) circle(d = nut_trap_d, $fn=6);
+          }
+        }
       }
     }
-    linear_extrude(th/2) {
+    tz(-th/2) linear_extrude(th/2) {
       difference() {
         rounded_square([x_car_l, x_car_h], r = 1.5, center = true);
         mxz((x_car_h-screw_clearance_d(car_screw)-th)/2) {
@@ -233,8 +272,13 @@ module x_carriage_front_stl() {
           belt_clamp_holes();
 
         // hotend mounting
-        hotend_mount_positions() rz(30)
-          circle(d = screw_clearance_d(car_screw));
+        hotend_mount_positions() {
+          if (carriage_inserts) {
+            circle(d = insert_d);
+          } else {
+            circle(d = screw_clearance_d(car_screw));
+          }
+        }
       }
     }
   }
@@ -254,7 +298,11 @@ module x_carriage_rear_stl() {
 
         // endstop mount nut trap
         tx(-(x_car_l-screw_clearance_d(car_screw)-th)/2) {
-          rz(30) circle(d = nut_trap_d, $fn = 6);
+          if (carriage_inserts) {
+            circle(d = insert_d);
+          } else {
+            rz(30) circle(d = nut_trap_d, $fn = 6);
+          }
         }
 
         // bottom belt attachment and clamp
@@ -275,7 +323,11 @@ module x_carriage_rear_stl() {
         }
         // endstop mounting hole
         tx(-(x_car_l-screw_clearance_d(car_screw)-th)/2) {
-          circle(d = screw_clearance_d(car_screw));
+          if (carriage_inserts) {
+            circle(d = insert_d);
+          } else {
+            circle(d = screw_clearance_d(car_screw));
+          }
         }
 
         // bottom belt attachment and clamp
@@ -589,38 +641,41 @@ module duct_stl() {
   bh = blower_depth(fan);
   be = blower_exit(fan);
   color(print_color) render() {
-    rz(90) rx(90) mxy(bh/2) {
+    blower_orientation() mxy(bh/2) {
       linear_extrude(th/2) {
         difference() {
           union() {
             hull() {
-              txy(p[1][0], p[1][1])
+              txy(p[0][0], p[0][1]+3)
                 circle(d = screw_clearance_d(car_screw)+th);
-              tx(-th/2) square([be+th, th]);
+              ty(-th/2) square([be, th]);
             }
           }
-          for (sp = p) {
-            txy(sp[0], sp[1]) circle(d = screw_clearance_d(car_screw));
-          }
+         hull() {
+           txy(p[0][0], p[0][1]+3) circle(d = screw_clearance_d(car_screw));
+           txy(p[0][0], p[0][1]-3) circle(d = screw_clearance_d(car_screw));
+         }
         }
       }
     }
-    ty(be/2) mxz(be/2+clearance) {
-      ty(th/4) rcc([bh+th, th/2-clearance, th/2]);
+    tyz(-2.8, -th*1.65) {
+      rcc([bh+th/2, th/2, th/4]);
     }
     difference() {
       union() {
-        tyz(be/2,-th/2) {
-          hull() {
-            tyz(+th/2, th/4) cc([bh+th, be+clearance, th/2]);
+        hull() {
+          tyz(0.6, 0.4) blower_orientation() {
+            txy((be+clearance)/2, -th/2) cc([be+clearance, th/2, bh+th]);
+          }
+          tyz(be/2,-th*0.4) {
             tyz(-be/2, -th+th/2) cc([bh+th, th/2, th+th/2]);
           }
         }
         hb = [16, 20, 11.5]; // e3d heater block dimensions
         w = hb[0]+th*4;
         d = hb[1]+th*3;
-        tyz(-carriage_w(x_car)/2-th*1-e3d_clamp_d()/2+th, -th*1.75) {
-          scale([1, 1.25, 1]) rz(45) rotate_extrude($fn = 4) {
+        tyz(-carriage_w(x_car)/2-th*1-e3d_clamp_d()/2+th, -th*1.65) {
+          scale([1, 1.3, 1]) rz(45) rotate_extrude($fn = 4) {
             tx((w+th)/2) {
               polygon(points = [[0, th*1.8], [th*1.2, th*1.8],
                                 [th*1.2, th*1.25],
@@ -632,10 +687,14 @@ module duct_stl() {
           }
         }
       }
-      ty(-clearance) {
-        tyz(be/2,-th/2) {
-          hull() {
-            tz(+th/2) cc([bh, be+clearance, th/2]);
+      hull() {
+        blower_orientation() {
+          txyz((be+clearance)/2, th/2, 0) {
+            cc([be+clearance-th/2, th/2, bh-th/2]);
+          }
+        }
+        ty(-clearance) {
+          tyz(be/2,-th/2) {
             tyz(-be/2, -th+th/2) rx(-30) cc([bh+th/2, th/2, th*0.75]);
           }
         }
@@ -710,12 +769,19 @@ module duct_mount_stl() {
   }
 }
 
+module blower_orientation() {
+  p = blower_screw_holes(fan);
+  tyz(-4, -9) ry(-90) txy(p[1][0], p[1][1]) rz(-27) txy(-p[1][0], -p[1][1]) {
+    children();
+  }
+}
+
 module duct_assembly()
     pose([46.6, 0, 208.20], [-15.3, 32.9, -28.9])
     assembly("duct") {
   tyz(-(screw_clearance_d(car_screw)+th)/2,
       -carriage_total_h(x_car)/2-th/4-e3d_height()) {
-    rz(90) rx(90) tz(-blower_depth(fan)/2) blower(fan);
+    blower_orientation() tz(-blower_depth(fan)/2) blower(fan);
     duct_stl();
   }
   tz(-carriage_total_h(x_car)+0.5-screw_clearance_d(car_screw)-th)
@@ -724,22 +790,22 @@ module duct_assembly()
   w = screw_washer(car_screw);
   mw = carriage_pitch_x(x_car)+screw_clearance_d(car_screw);
   dmw = blower_depth(fan)+th;
-  sl0 = mw + nut_h(n) + washer_h(w)*2;
-  sl1 = dmw + nut_h(n) + washer_h(w)*2;
+  sl0 = dmw + nut_h(n) + washer_h(w)*2;
+  sl1 = mw + nut_h(n) + washer_h(w)*2;
 
   tyz(-(screw_clearance_d(car_screw)+th)/2,
       -carriage_total_h(x_car)/2-th/4-e3d_height()) {
-    rz(90) rx(90) {
+    blower_orientation() {
       p = blower_screw_holes(fan);
-      txy(p[0][0], p[0][1]) {
-        tz(-mw/2) screw_washer_up(car_screw, sl0);
-        explode([0, 0, 5], true) tz(mw/2) washer(w) {
+      *txy(p[0][0], p[0][1]) {
+        tz(-dmw/2) screw_washer_up(car_screw, sl0);
+        explode([0, 0, 5], true) tz(dmw/2) washer(w) {
           explode([0, 0, 5]) nut(n);
         }
       }
       txy(p[1][0], p[1][1]) {
-        tz(-dmw/2) screw_washer_up(car_screw, sl1);
-        explode([0, 0, 5], true) tz(dmw/2) washer(w) {
+        tz(-mw/2) screw_washer_up(car_screw, sl1);
+        explode([0, 0, 5], true) tz(mw/2) washer(w) {
           explode([0, 0, 5]) nut(n);
         }
       }
