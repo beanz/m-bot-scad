@@ -19,6 +19,10 @@ th = 5;
 pw = 300;
 pd = 200;
 ph = 200;
+carriage_inserts = false;
+insert_d = 5.2;
+o_insert = [ "F1BM3",   5, 5.4, 5, 3, 5.4, 1.5, 4, 5.4 ];
+
 e2020 = E2020;
 e2040 = E2040;
 PSU_S_350 = S_300_12;
