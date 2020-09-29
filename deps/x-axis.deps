@@ -13,8 +13,8 @@
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/spool.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/extrusion.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/thread.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/core/teardrops.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/maths.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/utils/core/teardrops.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/d_connectors.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/blowers.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/blower.scad \
@@ -82,10 +82,10 @@
 	/home/beanz/things/m-bot/scad/x-carriage.scad \
 	/home/beanz/things/m-bot/scad/vitamins/e3d-v6.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/sweep.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/utils/quadrant.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/utils/tube.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/core/sphere.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/core/polyholes.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/tube.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/quadrant.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/fillet.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/rail.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/core/global.scad \

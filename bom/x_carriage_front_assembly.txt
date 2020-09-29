@@ -6,4 +6,5 @@ Vitamins:
 
 Printed:
   2 belt_clamp.stl
+  1 hotend_mount.stl
   1 x_carriage_front.stl

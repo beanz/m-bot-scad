@@ -18,13 +18,12 @@
 	/home/beanz/git/github/nophead/NopSCADlib/utils/rounded_polygon.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/round.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/fillet.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/quadrant.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/vitamins/inserts.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/utils/core/clip.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/spool.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/extrusion.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/thread.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/core/teardrops.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/maths.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/utils/core/teardrops.scad \
 	/home/beanz/things/m-bot/scad/xy-motor.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/d_connectors.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/blowers.scad \
@@ -35,6 +34,7 @@
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/iec.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/iecs.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/spade.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/vitamins/inserts.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/spades.scad \
 	/home/beanz/things/m-bot/scad/y-axis.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/core/core.scad \
@@ -89,7 +89,6 @@
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/pulley.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/swiss_clips.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/extrusion_bracket.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/core/clip.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/spools.scad \
 	/home/beanz/things/m-bot/scad/vitamins/probe.scad \
 	/home/beanz/things/scad/lazy.scad \
@@ -105,6 +104,7 @@
 	/home/beanz/git/github/nophead/NopSCADlib/utils/sweep.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/vitamins/smds.scad \
 	/home/beanz/things/scad/shapes.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/utils/quadrant.scad \
+	/home/beanz/git/github/nophead/NopSCADlib/utils/tube.scad \
 	/home/beanz/git/github/nophead/NopSCADlib/utils/core/sphere.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/core/polyholes.scad \
-	/home/beanz/git/github/nophead/NopSCADlib/utils/tube.scad
+	/home/beanz/git/github/nophead/NopSCADlib/utils/core/polyholes.scad

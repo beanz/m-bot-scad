@@ -265,6 +265,10 @@
             "belt_clamp.stl": {
                 "count": 2, 
                 "colour": "[0, 0.572549, 0]"
+            }, 
+            "hotend_mount.stl": {
+                "count": 1, 
+                "colour": "[0, 0.572549, 0]"
             }
         }, 
         "vitamins": {
