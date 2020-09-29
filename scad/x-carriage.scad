@@ -217,7 +217,7 @@ module x_carriage_front_stl() {
         hotend_mount_positions() rz(30) circle(d = nut_trap_d, $fn=6);
       }
     }
-    linear_extrude(th/2) {
+    tz(-th/2) linear_extrude(th/2) {
       difference() {
         rounded_square([x_car_l, x_car_h], r = 1.5, center = true);
         mxz((x_car_h-screw_clearance_d(car_screw)-th)/2) {
