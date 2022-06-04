@@ -10,7 +10,7 @@ module x_rail_assembly() assembly("x_rail") {
   rail_screws(x_rail, x_rail_l, sheet + nut_thickness(nut));
   rail_hole_positions(x_rail, x_rail_l, 0)
     tz(-sheet) vflip() sliding_t_nut(nut);
-  tx(pos[0]) explode([x_rail_l/2-pos[0]+20, 0, 0]) carriage_for_rail(x_rail);
+  tx(pos[0]) explode([x_rail_l/2-pos[0]+20, 0, 0]) carriage(x_car);
 }
 
 module x_rail_extrusion_assembly()

@@ -11,7 +11,7 @@ module y_rail_assembly() assembly("y_rail") {
   rail_screws(y_rail, y_rail_l, sheet + nut_thickness(n));
   rail_hole_positions(y_rail, y_rail_l, 0)
     tz(-sheet) vflip() sliding_t_nut(n);
-  tx(pos[1]) explode([y_rail_l/2-pos[1]+20, 0, 0]) carriage_for_rail(y_rail);
+  tx(pos[1]) explode([y_rail_l/2-pos[1]+20, 0, 0]) carriage(y_car);
 }
 
 module left_y_rail_assembly()

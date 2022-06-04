@@ -136,10 +136,6 @@ module inside_hidden_corner_bracket() {
   extrusion_inner_corner_bracket(E20_inner_corner_bracket);
 }
 
-module carriage_for_rail(t) {
-  carriage(rail_carriage(t), t);
-}
-
 module iec_socket() {
   rz(90) iec(IEC_320_C14_switched_fused_inlet);
 }
@@ -194,18 +190,18 @@ psu_screw = M4_cap_screw;
 psu_low_screw = M4_flanged_screw;
 opulley = GT2x20ob_pulley; // TOFIX: GT2x20_ooznest_pulley;
 
-z_rail = MGN15H;
-z_car = rail_carriage(z_rail);
+z_car = MGN15H_carriage;
+z_rail = carriage_rail(z_car);
 z_car_l = carriage_l(z_car);
 z_car_w = carriage_w(z_car);
 z_car_h = carriage_total_h(z_car);
-y_rail = MGN15H;
-y_car = rail_carriage(y_rail);
+y_car = MGN15H_carriage;
+y_rail = carriage_rail(y_car);
 y_car_l = carriage_l(y_car);
 y_car_w = carriage_w(y_car);
 y_car_h = carriage_total_h(y_car);
-x_rail = MGN12H;
-x_car = rail_carriage(x_rail);
+x_car = MGN12H_carriage;
+x_rail = carriage_rail(x_car);
 x_car_l = carriage_l(x_car);
 x_car_h = ew+carriage_total_h(x_car)+(screw_clearance_d(car_screw)+th)*2+th/2;
 pulley_d = pulley_od(opulley);

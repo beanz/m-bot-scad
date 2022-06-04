@@ -42,7 +42,7 @@ module z_rail_assembly() assembly("z_rail") {
   rail_screws(z_rail, z_rail_l, sheet + nut_thickness(n));
   rail_hole_positions(z_rail, z_rail_l, 0)
     tz(-sheet) vflip() sliding_t_nut(n);
-  //tx(pos[1]) explode([z_rail_l/2-pos[1]+20, 0, 0]) carriage_for_rail(z_rail);
+  //tx(pos[1]) explode([z_rail_l/2-pos[1]+20, 0, 0]) carriage(z_car);
 }
 
 module z_axis_rail_assembly() {
@@ -88,7 +88,7 @@ module milled_corner_for_tapped_end_assembly()
 module z_carriage_assembly()
   assembly("z_carriage") {
   txz(ew/2, carriage_screw_gap_l(z_car)/2) {
-    ry(90) carriage_for_rail(z_rail);
+    ry(90) carriage(z_car);
     tx(carriage_total_h(z_car)+th) rz(180) {
       mxz(carriage_screw_gap_w(z_car)/2) {
         tz(carriage_screw_gap_l(z_car)/2) {
@@ -215,7 +215,7 @@ module z_rail_mount_stl() {
   clearance = 0.2;
   color(print_color) render() {
     //txz(ew/2+th, carriage_screw_gap_l(z_car)/2) {
-    //  ry(-90) tz(-carriage_total_h(z_car)) carriage_for_rail(z_rail);
+    //  ry(-90) tz(-carriage_total_h(z_car)) carriage(z_car);
     //}
     difference() {
       tx(th/2) {
