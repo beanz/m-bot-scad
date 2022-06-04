@@ -4,17 +4,17 @@ include <shapes.scad>
 
 ml = 28;
 l = 92;
-nw = NEMA_width(NEMA17);
+nw = NEMA_width(NEMA17_47);
 
 module titan_mount_stl() {
   stl("titan_mount");
   color(print_color) render() {
     tz(-1) linear_extrude(2) difference() {
       ty(2) square([46, 46], center = true);
-      NEMA_hole_positions(NEMA17, 4) {
+      NEMA_hole_positions(NEMA17_47, 4) {
         circle(d = screw_clearance_d(motor_screw));
       }
-      circle(r = NEMA_big_hole(NEMA17)+1);
+      circle(r = NEMA_big_hole(NEMA17_47)+1);
     }
 
     ty(nw/2+th) rx(90) linear_extrude(th) difference() {
@@ -38,7 +38,7 @@ module titan_mount_assembly()
   assembly("titan_mount") {
   ty(-nw/2-th) {
     titan_mount_stl();
-    tz(-1) rz(90) NEMA(NEMA17M);
+    tz(-1) rz(90) NEMA(NEMA17_40);
     vitamin("E3DTitan: E3D Titan Extruder");
     translate([0, 0, 14.5]) %cube([40, 40, 26], center = true);
     tz(-7) mxy((l-screw_clearance_d(ex_screw)-th)/2) {

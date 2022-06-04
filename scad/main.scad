@@ -111,7 +111,7 @@ module frame_with_z_motor_assembly()
     txy(-z_shaft_offset+ew/2, 80) {
       z_motor_assembly();
       tz(5) {
-        NEMA_hole_positions(NEMA17, 4) {
+        NEMA_hole_positions(NEMA17_47, 4) {
           screw_washer(motor_screw, 10);
         }
       }

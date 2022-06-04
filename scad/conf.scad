@@ -237,8 +237,8 @@ z_rail_l = ph+100;
 z_offset = 44;
 
 hotend_mount_h = carriage_total_h(x_car)+ew+screw_clearance_d(car_screw)+th*1.5;
-motor_offset = sqrt(2*NEMA_width(NEMA17)*NEMA_width(NEMA17)) / 2;
-motor_hole_offset = sqrt(2*NEMA_hole_pitch(NEMA17)*NEMA_hole_pitch(NEMA17)) / 2;
+motor_offset = sqrt(2*NEMA_width(NEMA17_47)*NEMA_width(NEMA17_47)) / 2;
+motor_hole_offset = sqrt(2*NEMA_hole_pitch(NEMA17_47)*NEMA_hole_pitch(NEMA17_47)) / 2;
 
 bottom_belt_h = th-8-pulley_belt_center(opulley);
 top_belt_h = th-5.5-(pulley_length(opulley)-pulley_belt_center(opulley));

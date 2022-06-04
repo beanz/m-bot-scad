@@ -68,7 +68,7 @@ module z_axis_rail_assembly() {
 
 module z_motor_assembly()
   assembly("z_motor") {
-  NEMA(NEMA17);
+  NEMA(NEMA17_47);
   tz(290/2+25) leadscrew(8, 250, 8, 4);
   tz(23) coupler();
 }
@@ -284,7 +284,7 @@ module z_motor_mount_assembly()
 module z_motor_mount_stl() {
   stl("z_motor_mount");
   color(print_color) render() difference() {
-    l = z_shaft_offset+NEMA_hole_pitch(NEMA17)/2+th;
+    l = z_shaft_offset+NEMA_hole_pitch(NEMA17_47)/2+th;
     union() {
       tx((ew-l)/2) rrcf([l, ew*2, th]);
       hull() {
@@ -294,8 +294,8 @@ module z_motor_mount_stl() {
     }
     txz(-ew-th, -ew*2-eta) rcc([ew, ew*2-th*2, ew*2]);
     tx(-z_shaft_offset+ew/2) {
-      cylinder(r = NEMA_big_hole(NEMA17)+1, h = 100, center = true);
-      NEMA_screw_positions(NEMA17) {
+      cylinder(r = NEMA_big_hole(NEMA17_47)+1, h = 100, center = true);
+      NEMA_screw_positions(NEMA17_47) {
         cylinder(d = screw_clearance_d(M3_cap_screw),
                  h = 100, center = true);
       }
