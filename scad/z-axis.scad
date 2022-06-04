@@ -69,8 +69,8 @@ module z_axis_rail_assembly() {
 module z_motor_assembly()
   assembly("z_motor") {
   NEMA(NEMA17_47);
-  tz(290/2+25) leadscrew(8, 250, 8, 4);
-  tz(23) coupler();
+  tz(290/2+6) explode([0,0,50], offset = [0,0,-290/2+50]) leadscrew(8, 250, 8, 4);
+  tz(23) explode([0,0,20]) coupler();
 }
 
 module milled_corner_for_tapped_end_assembly()
@@ -321,15 +321,15 @@ module acme_anti_backlash_nut() {
 }
 
 if ($preview) {
-  $explode = 1;
+  $explode = 0;
   //left_z_axis_rail_assembly();
   //right_z_axis_rail_assembly();
   //z_axis_rail_assembly();
   //z_rail_assembly();
-  //z_motor_assembly();
+  z_motor_assembly();
   //milled_corner_for_tapped_end_assembly();
   //z_carriage_assembly();
   //bed_assembly();
-  z_axis_assembly();
+  //z_axis_assembly();
   //z_motor_mount_assembly();
 }
