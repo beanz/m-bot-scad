@@ -1,0 +1,6 @@
+milled_corner_for_tapped_end_assemblies:
+Vitamins:
+  4 Ooznest 90 Degree Angle Corner (VSLOT-B-90AC)
+  4 Screw M5 low profile x 10mm
+  4 Screw M5 low profile x 12mm
+  4 Nut M5 sliding T

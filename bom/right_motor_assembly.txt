@@ -1,0 +1,13 @@
+right_motor_assembly:
+Vitamins:
+  1 Stepper motor NEMA17 x 47mm
+  1 Pulley GT2OB 20 teeth
+  1 Screw M3 cap x 10mm
+  3 Screw M3 cap x 12mm
+  3 Screw M4 cap x 10mm
+  3 Nut M4 sliding T
+  3 Washer  M3 x 7mm x 0.5mm
+  3 Washer  M4 x 9mm x 0.8mm
+
+Printed:
+  1 right_motor_mount.stl

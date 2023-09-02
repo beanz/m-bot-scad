@@ -1,0 +1,7 @@
+belts_assembly:
+Vitamins:
+  1 GT2 1601.66
+  1 GT2 1609.36
+
+Assemblies:
+  1 hotend_assembly

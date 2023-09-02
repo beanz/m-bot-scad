@@ -1,0 +1,10 @@
+duct_assembly:
+Vitamins:
+  1 Blower Runda RB5015
+  1 Nut M3 x 2.4mm 
+  1 Screw M3 cap x 30mm
+  2 Washer  M3 x 7mm x 0.5mm
+
+Printed:
+  1 duct.stl
+  1 duct_mount.stl

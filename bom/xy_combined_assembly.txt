@@ -1,0 +1,6 @@
+xy_combined_assembly:
+
+Assemblies:
+  1 left_y_carriage_assembly
+  1 right_y_carriage_assembly
+  1 x_axis_assembly

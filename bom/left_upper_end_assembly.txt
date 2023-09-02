@@ -1,0 +1,10 @@
+left_upper_end_assembly:
+Vitamins:
+  1 Extrusion E2020 x 354mm
+
+Assemblies:
+  2 cast_corner_bracket_assemblies
+  1 left_back_top_corner_assembly
+  1 left_front_top_corner_assembly
+  1 left_y_rail_assembly
+  2 side_top_corner_assemblies

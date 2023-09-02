@@ -1,0 +1,7 @@
+y_rail_assemblies:
+Vitamins:
+  2 Linear rail carriage MGN15H
+  2 Linear rail MGN15 x 300mm
+ 12 Screw M3 cap x 12mm
+  4 Screw M3 cs cap x 16mm
+ 16 Nut M4 sliding T

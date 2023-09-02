@@ -1,0 +1,8 @@
+left_lower_end_with_z_assembly:
+
+Assemblies:
+  1 bottom_corner_assembly
+  1 cast_corner_bracket_assembly
+  1 left_lower_end_assembly
+  1 left_z_axis_rail_assembly
+  1 reversed_bottom_corner_assembly

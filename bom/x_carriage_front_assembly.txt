@@ -1,0 +1,10 @@
+x_carriage_front_assembly:
+Vitamins:
+  7 Nut M3 x 2.4mm 
+  7 Screw M3 cap x 10mm
+  7 Washer  M3 x 7mm x 0.5mm
+
+Printed:
+  2 belt_clamp.stl
+  1 hotend_mount.stl
+  1 x_carriage_front.stl

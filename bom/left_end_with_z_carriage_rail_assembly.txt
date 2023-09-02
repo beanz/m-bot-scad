@@ -1,0 +1,14 @@
+left_end_with_z_carriage_rail_assembly:
+Vitamins:
+  1 Ooznest ACME anti-backlash nut
+  1 Extrusion E2020 x 220mm
+  4 Screw M4 cap x 10mm
+  2 Screw M5 cap x 16mm
+  4 Nut M4 sliding T
+  2 Nut M5 sliding T
+  4 Washer  M4 x 9mm x 0.8mm
+  2 Washer  M5 x 10mm x 1mm
+
+Assemblies:
+  1 left_end_frame_assembly
+  2 milled_corner_for_tapped_end_assemblies

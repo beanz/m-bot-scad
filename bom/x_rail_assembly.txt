@@ -1,0 +1,7 @@
+x_rail_assembly:
+Vitamins:
+  1 Linear rail carriage MGN12H
+  1 Linear rail MGN12 x 400mm
+ 14 Screw M3 cap x 10mm
+  2 Screw M3 cs cap x 12mm
+ 16 Nut M3 sliding T

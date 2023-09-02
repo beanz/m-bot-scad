@@ -1,0 +1,14 @@
+back_right_idler_assembly:
+Vitamins:
+  1 Nut M3 x 2.4mm 
+  1 Screw M3 cap x 35mm
+  3 Screw M4 cap x 10mm
+  3 Nut M4 sliding T
+  2 Washer  M3 x 7mm x 0.5mm
+  3 Washer  M4 x 9mm x 0.8mm
+
+Printed:
+  1 right_idler.stl
+
+Assemblies:
+  1 dual_idler_assembly

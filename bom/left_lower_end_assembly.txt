@@ -1,0 +1,9 @@
+left_lower_end_assembly:
+Vitamins:
+  1 Extrusion E2040 x 354mm
+
+Assemblies:
+  1 cast_corner_bracket_assembly
+  2 milled_corner_bracket_assemblies
+  1 rail_guard_assembly
+  1 z_motor_mount_assembly

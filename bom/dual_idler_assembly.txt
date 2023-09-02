@@ -1,0 +1,4 @@
+dual_idler_assemblies:
+Vitamins:
+  8 Ball bearing F623-2RS 3mm x 10mm x 4mm
+ 10 Washer  M3 x 7mm x 0.5mm

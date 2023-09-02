@@ -1,0 +1,9 @@
+z_carriage_assemblies:
+Vitamins:
+  2 Linear rail carriage MGN15H
+  4 Screw M3 cap x 10mm
+  4 Screw M3 cap x 12mm
+  4 Washer  M3 x 7mm x 0.5mm
+
+Printed:
+  2 z_rail_mount.stl

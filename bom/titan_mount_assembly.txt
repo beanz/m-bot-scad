@@ -1,0 +1,10 @@
+titan_mount_assemblies:
+Vitamins:
+  2 E3D Titan Extruder
+  2 Stepper motor NEMA17 x 40mm
+  4 Screw M4 cap x 10mm
+  4 Nut M4 sliding T
+  4 Washer  M4 x 9mm x 0.8mm
+
+Printed:
+  2 titan_mount.stl

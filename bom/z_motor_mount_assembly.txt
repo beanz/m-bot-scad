@@ -1,0 +1,8 @@
+z_motor_mount_assemblies:
+Vitamins:
+ 12 Screw M4 cap x 10mm
+ 12 Nut M5 sliding T
+ 12 Washer  M4 x 9mm x 0.8mm
+
+Printed:
+  2 z_motor_mount.stl

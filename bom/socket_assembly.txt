@@ -1,0 +1,7 @@
+socket_assembly:
+Vitamins:
+  1 IEC320 C14 switched fused inlet module
+  2 Screw M3 cs cap x  6mm
+
+Assemblies:
+  1 belts_assembly

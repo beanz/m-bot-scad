@@ -1,0 +1,10 @@
+lower_back_frame_assembly:
+Vitamins:
+  1 Extrusion E2040 x 472mm
+  6 Screw M4 cap x 10mm
+  6 Nut M4 sliding T
+  6 Washer  M4 x 9mm x 0.8mm
+
+Printed:
+  1 psu_cover.stl
+  2 psu_mount.stl

@@ -1,0 +1,11 @@
+y_endstop_assembly:
+Vitamins:
+  1 Microswitch SS-01 or SS-5GL
+  2 Screw M3 cap x 12mm
+  1 Screw M4 cap x 10mm
+  1 Nut M4 sliding T
+  2 Washer  M3 x 7mm x 0.5mm
+  1 Washer  M4 x 9mm x 0.8mm
+
+Printed:
+  1 y_endstop_mount.stl

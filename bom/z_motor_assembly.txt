@@ -1,0 +1,4 @@
+z_motor_assemblies:
+Vitamins:
+  2 Stepper motor NEMA17 x 47mm
+  2 Leadscrew 8 x 250mm, 8mm lead, 4 starts

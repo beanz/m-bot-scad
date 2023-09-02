@@ -1,0 +1,6 @@
+cast_corner_bracket_assemblies:
+Vitamins:
+ 24 Extrusion corner bracket 20mm for E2020t
+ 48 Screw M5 low profile x  8mm
+ 48 Nut M4 sliding T
+ 48 Washer  M5 x 10mm x 1mm

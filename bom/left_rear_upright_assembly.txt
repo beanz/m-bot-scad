@@ -1,0 +1,14 @@
+left_rear_upright_assembly:
+Vitamins:
+  1 Extrusion E2040 x 430mm
+  1 Extrusion inner corner bracket for E2020t
+  2 Screw M5 flanged x 12mm
+  4 Nut M4 sliding T
+
+Printed:
+  1 foot.stl
+
+Assemblies:
+  1 back_left_idler_assembly
+  1 bottom_corner_assembly
+  1 cast_corner_bracket_assembly

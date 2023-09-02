@@ -1,0 +1,9 @@
+main_assembly:
+Vitamins:
+  1 PSU S-300-12
+  4 Screw M4 cap x 10mm
+  4 Screw M4 cap x  8mm
+  8 Washer  M4 x 9mm x 0.8mm
+
+Assemblies:
+  1 duet_assembly

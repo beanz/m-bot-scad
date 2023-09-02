@@ -1,0 +1,8 @@
+frame_assembly:
+Vitamins:
+  2 Extrusion E2040 x 472mm
+
+Assemblies:
+  1 left_end_with_z_carriage_rail_assembly
+  1 lower_back_frame_assembly
+  1 right_end_with_z_carriage_rail_assembly

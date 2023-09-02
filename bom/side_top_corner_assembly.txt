@@ -1,0 +1,7 @@
+side_top_corner_assemblies:
+Vitamins:
+ 28 Screw M4 flanged x 10mm
+ 28 Nut M4 sliding T
+
+Printed:
+  4 side_top_corner.stl
