@@ -1,0 +1,10 @@
+/tmp
+/assemblies/deps
+/dxfs/deps
+/stls/deps
+/assemblies/times.txt
+/dxfs/times.txt
+/stls/times.txt
+/bom/bom.deps
+/openscad.echo
+/openscad.log
